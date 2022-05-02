@@ -1,0 +1,94 @@
+#' Create a Magnitude connection
+#'
+#' @param path String; path to a magnitude file.
+#' @return A Magnitude connection object inheriting
+#' SQLiteConnection class from 'RSQLite' package.
+#' @export
+magnitude <- function(path) {
+  new_magnitude(file.path(path))
+}
+
+#' Close a Magnitude connection
+#'
+#' @param con A Magnitude connection.
+#' @return The value from \code{RSQLite::dbDisconnect} is returned invisibly.
+#' @export
+close <- function(con) {
+  RSQLite::dbDisconnect(con)
+}
+
+#' @keywords internal
+precision <- function(con) {
+  subset(con@format, key == "precision")$value
+}
+
+#' @keywords internal
+subword <- function(con) {
+  subset(con@format, key == "subword")$value
+}
+
+#' @keywords internal
+subword_start <- function(con) {
+  subset(con@format, key == "subword_start")$value
+}
+
+#' @keywords internal
+subword_end <- function(con) {
+  subset(con@format, key == "subword_end")$value
+}
+
+#' @keywords internal
+highest_entropy_dims <- function(con) {
+  subset(con@format, key == "entropy")$value
+}
+
+#' @keywords internal
+max_duplicate_keys <- function(con) {
+  duplicated_key_query <- subset(con@format, key == "max_duplicate_keys")$value
+  if (duplicated_key_query == 0) {
+    res <-
+      RSQLite::dbSendQuery(
+        con,
+        "SELECT MAX(key_count) FROM (SELECT COUNT(key) AS key_count FROM magnitude GROUP BY key);"
+      )
+    tbl <- RSQLite::dbFetch(res) %>%
+      tibble::as_tibble()
+    RSQLite::dbClearResult(res)
+    ifelse(rlang::empty(tbl[1, 1]), 1, tbl[1, 1])
+  } else {
+    duplicated_key_query
+  }
+}
+
+#' Magnitude class
+#'
+#' Connection object to a magnitude file.
+#'
+#' @name magnitude-class
+#' @param dbname The path to the magnitude file.
+#' @param ... Other arguments are passed to \code{RSQLite::dbConnect}.
+#' @keywords internal
+new_magnitude <- function(dbname, ...) {
+  con <- RSQLite::dbConnect(RSQLite::SQLite(), dbname, ...)
+  format <-
+    dplyr::tbl(con, "magnitude_format") %>%
+    dplyr::collect()
+  new("Magnitude", con, format = format)
+}
+
+#' @keywords internal
+setClass("Magnitude",
+  slots = c(format = "data.frame"),
+  prototype = list(format = data.frame(key = character(), value = integer())),
+  contains = "SQLiteConnection"
+)
+
+#' Dimensions of a Magnitude table
+#' @export
+setMethod("dim",
+  signature = c(x = "Magnitude"),
+  function(x) {
+    c(subset(x@format, key == "size")$value,
+      subset(x@format, key == "dim")$value)
+  }
+)
