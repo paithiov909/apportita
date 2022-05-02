@@ -1,6 +1,8 @@
 # apportita <a href='https://paithiov909.github.io/apportita'><img src='man/figures/logo.png' align="right" height="139" /></a>
 
-Apportita is a partial port of R from [plasticityai/magnitude](https://github.com/plasticityai/magnitude), which is a fast, simple utility library for handling vector embeddings.
+> [WIP] Utilities for Handling 'magnitude' Word Embeddings
+
+Apportita is a partial R port from [plasticityai/magnitude](https://github.com/plasticityai/magnitude), which is a fast, simple utility library for handling vector embeddings.
 
 ## Roadmap
 
