@@ -7,10 +7,10 @@
 close(con)
 }
 \arguments{
-\item{con}{A Magnitude connection.}
+\item{con}{a Magnitude connection.}
 }
 \value{
-The value from \code{RSQLite::dbDisconnect} is returned invisibly.
+the value from \code{RSQLite::dbDisconnect} is returned invisibly.
 }
 \description{
 Close a Magnitude connection

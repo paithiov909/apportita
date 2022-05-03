@@ -7,10 +7,10 @@
 magnitude(path)
 }
 \arguments{
-\item{path}{String; path to a magnitude file.}
+\item{path}{string; path to a magnitude file.}
 }
 \value{
-A Magnitude connection object inheriting
+a Magnitude connection object inheriting
 SQLiteConnection class from 'RSQLite' package.
 }
 \description{

@@ -8,9 +8,12 @@
 new_magnitude(dbname, ...)
 }
 \arguments{
-\item{dbname}{The path to the magnitude file.}
+\item{dbname}{the path to the magnitude file.}
 
-\item{...}{Other arguments are passed to \code{RSQLite::dbConnect}.}
+\item{...}{other arguments are passed to \code{RSQLite::dbConnect}.}
+}
+\value{
+a Magnitude class object.
 }
 \description{
 Connection object to a magnitude file.

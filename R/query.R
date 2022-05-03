@@ -17,17 +17,17 @@ query <- function(con, q, normalized = TRUE) {
   db_result_to_vec(con, tbl, normalized)
 }
 
-#' Calculates the distance from keys to the keys in q
+#' Calculate distances from keys to keys in q
 #'
-#' @param con A Magnitude connection.
-#' @param key Character vector.
-#' @param q Character vector.
-#' @param normalized Logical.
-#' @param mehtod String; method to compute distance.
-#' @param ... Other arguments are passed to \code{proxyC::dist}.
-#' @return A sparse Matrix of 'Matrix' package.
+#' @param con a Magnitude connection.
+#' @param key character vector.
+#' @param q character vector.
+#' @param normalized logical.
+#' @param mehtod string; method to compute distance.
+#' @param ... other arguments are passed to \code{proxyC::dist}.
+#' @return a sparse Matrix of 'Matrix' package.
 #' @export
-query_dist <- function(con, key, q, normalized = TRUE,
+calc_dist <- function(con, key, q, normalized = TRUE,
                        method = c(
                          "euclidean",
                          "chisquared",
@@ -40,27 +40,24 @@ query_dist <- function(con, key, q, normalized = TRUE,
                        ),
                        ...) {
   method <- rlang::arg_match(method)
-  key <- query(con, key, normalized)
-  q <- query(con, q, normalized)
-  proxyC::dist(
-    as.matrix(dplyr::select(key, starts_with("dim"))),
-    as.matrix(dplyr::select(q, starts_with("dim"))),
-    method = method,
-    ...
-  )
+  x <- query(con, key, normalized) %>%
+    tibble::column_to_rownames("key") %>%
+    as.matrix()
+  y <- query(con, q, normalized) %>%
+    tibble::column_to_rownames("key") %>%
+    as.matrix()
+  proxyC::dist(x, y, method = method, ...)
 }
 
-#' Find the farest key out of q
+#' Order q by their distances to key
 #'
-#' Given a set of keys, figures out which key doesn't match the rest.
-#'
-#' @param con A Magnitude connection.
-#' @param key String.
-#' @param q Character vector.
-#' @param normalized Logical.
-#' @param method String; method to compute distance.
-#' @param n Integer.
-#' @return A named numeric vector of which elements represent distances to `key`.
+#' @param con a Magnitude connection.
+#' @param key string.
+#' @param q character vector.
+#' @param normalized logical; whether or not vector embeddings should be normalized?
+#' @param method string; method to compute distance.
+#' @param n integer.
+#' @return an ordered named numeric vector of which elements represent distances to `key`.
 #' @export
 doesnt_match <- function(con, key, q, normalized = TRUE,
                          method = c(
@@ -77,35 +74,25 @@ doesnt_match <- function(con, key, q, normalized = TRUE,
   if (length(key) != 1L) {
     rlang::warn("length of `key` is not 1L. the first element will be used.")
   }
-  ## FIXME: removing q that exact same in key
-  ## since proxyC returns shuffled results when y contains a same matrix with x.
-  q <- q[which(!q %in% key, arr.ind = TRUE)]
+  q <- unique(q[which(!q %in% key, arr.ind = TRUE)])
   n <- ifelse(n > length(q), length(q), n)
-
-  dist <-
-    as.matrix(query_dist(con, key[1], q, normalized, method)) %>%
-    t() %>%
-    as.data.frame()
-  dist$q <- q
-
-  dist %>%
-    dplyr::slice_max(.data$V1, n = n, with_ties = TRUE) %>%
-    (function(x) {
-      purrr::set_names(x$V1, x$q)
-    })()
+  simil <-
+    as.matrix(calc_dist(con, key[1], q, normalized, method))
+  ix <- sort(simil, decreasing = TRUE, index.return = TRUE)$ix
+  purrr::set_names(simil[1, ix], names(simil[1, ix]))[1:n]
 }
 
-#' Calculate the similarity from keys to the keys in q
+#' Calculate similarities from keys to keys in q
 #'
-#' @param con A Magnitude connection.
-#' @param key Character vector.
-#' @param q Character vector.
-#' @param normalized Logical.
-#' @param mehtod String; method to compute similarity.
-#' @param ... Other arguments are passed to \code{proxyC::simil}.
-#' @return A sparse Matrix of 'Matrix' package.
+#' @param con a Magnitude connection.
+#' @param key character vector.
+#' @param q character vector.
+#' @param normalized logical.
+#' @param mehtod string; method to compute similarity.
+#' @param ... other arguments are passed to \code{proxyC::simil}.
+#' @return a sparse Matrix of 'Matrix' package.
 #' @export
-query_simil <- function(con, key, q, normalized = TRUE,
+calc_simil <- function(con, key, q, normalized = TRUE,
                         method = c(
                           "cosine",
                           "correlation",
@@ -119,28 +106,24 @@ query_simil <- function(con, key, q, normalized = TRUE,
                         ),
                         ...) {
   method <- rlang::arg_match(method)
-  key <- query(con, key, normalized)
-  q <- query(con, q, normalized)
-  proxyC::simil(
-    as.matrix(dplyr::select(key, starts_with("dim"))),
-    as.matrix(dplyr::select(q, starts_with("dim"))),
-    method = method,
-    ...
-  )
+  x <- query(con, key, normalized) %>%
+    tibble::column_to_rownames("key") %>%
+    as.matrix()
+  y <- query(con, q, normalized) %>%
+    tibble::column_to_rownames("key") %>%
+    as.matrix()
+  proxyC::simil(x, y, method = method, ...)
 }
 
-#' Find the most similar key out of q
+#' Order q by their similarity to key
 #'
-#' Query for the most similar key out of a list of keys
-#' to a given key like so.
-#'
-#' @param con A Magnitude connection.
-#' @param key String.
-#' @param q Character vector.
-#' @param normalized Logical.
-#' @param mehtod String; method to compute similarity.
-#' @param n Integer.
-#' @return A named numeric vector of which elements represent similarities to `key`.
+#' @param con a Magnitude connection.
+#' @param key string.
+#' @param q character vector.
+#' @param normalized logical.
+#' @param mehtod string; method to compute similarity.
+#' @param n integer.
+#' @return an ordered named numeric vector of which elements represent similarities to `key`.
 #' @export
 most_similar_to_given <- function(con, key, q, normalized = TRUE,
                                   method = c(
@@ -158,20 +141,10 @@ most_similar_to_given <- function(con, key, q, normalized = TRUE,
   if (length(key) != 1L) {
     rlang::warn("length of `key` is not 1L. the first element will be used.")
   }
-  ## FIXME: removing q that exact same in key
-  ## since proxyC returns shuffled results when y contains a same matrix with x.
-  q <- q[which(!q %in% key, arr.ind = TRUE)]
+  q <- unique(q[which(!q %in% key, arr.ind = TRUE)])
   n <- ifelse(n > length(q), length(q), n)
-
   simil <-
-    as.matrix(query_simil(con, key[1], q, normalized, method)) %>%
-    t() %>%
-    as.data.frame()
-  simil$q <- q
-
-  simil %>%
-    dplyr::slice_max(.data$V1, n = n, with_ties = TRUE) %>%
-    (function(x) {
-      purrr::set_names(x$V1, x$q)
-    })()
+    as.matrix(calc_simil(con, key[1], q, normalized, method))
+  ix <- sort(simil, decreasing = TRUE, index.return = TRUE)$ix
+  purrr::set_names(simil[1, ix], names(simil[1, ix]))[1:n]
 }

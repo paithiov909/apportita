@@ -2,7 +2,7 @@
 % Please edit documentation in R/query.R
 \name{doesnt_match}
 \alias{doesnt_match}
-\title{Find the farest key out of q}
+\title{Order q by their distances to key}
 \usage{
 doesnt_match(
   con,
@@ -15,21 +15,21 @@ doesnt_match(
 )
 }
 \arguments{
-\item{con}{A Magnitude connection.}
+\item{con}{a Magnitude connection.}
 
-\item{key}{String.}
+\item{key}{string.}
 
-\item{q}{Character vector.}
+\item{q}{character vector.}
 
-\item{normalized}{Logical.}
+\item{normalized}{logical; whether or not vector embeddings should be normalized?}
 
-\item{method}{String; method to compute distance.}
+\item{method}{string; method to compute distance.}
 
-\item{n}{Integer.}
+\item{n}{integer.}
 }
 \value{
-A named numeric vector of which elements represent distances to `key`.
+an ordered named numeric vector of which elements represent distances to `key`.
 }
 \description{
-Given a set of keys, figures out which key doesn't match the rest.
+Order q by their distances to key
 }

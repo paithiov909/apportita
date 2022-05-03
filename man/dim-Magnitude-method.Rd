@@ -2,14 +2,10 @@
 % Please edit documentation in R/magnitude.R
 \name{dim,Magnitude-method}
 \alias{dim,Magnitude-method}
-\title{Rows size of a Magnitude table
-Columns size of a Magnitude table
-Dimensions of a Magnitude table}
+\title{Dimensions of a Magnitude table}
 \usage{
 \S4method{dim}{Magnitude}(x)
 }
 \description{
-Rows size of a Magnitude table
-Columns size of a Magnitude table
 Dimensions of a Magnitude table
 }

@@ -1,7 +1,7 @@
 #' Create a Magnitude connection
 #'
-#' @param path String; path to a magnitude file.
-#' @return A Magnitude connection object inheriting
+#' @param path string; path to a magnitude file.
+#' @return a Magnitude connection object inheriting
 #' SQLiteConnection class from 'RSQLite' package.
 #' @export
 magnitude <- function(path) {
@@ -10,8 +10,8 @@ magnitude <- function(path) {
 
 #' Close a Magnitude connection
 #'
-#' @param con A Magnitude connection.
-#' @return The value from \code{RSQLite::dbDisconnect} is returned invisibly.
+#' @param con a Magnitude connection.
+#' @return the value from \code{RSQLite::dbDisconnect} is returned invisibly.
 #' @export
 close <- function(con) {
   RSQLite::dbDisconnect(con)
@@ -65,8 +65,9 @@ max_duplicate_keys <- function(con) {
 #' Connection object to a magnitude file.
 #'
 #' @name magnitude-class
-#' @param dbname The path to the magnitude file.
-#' @param ... Other arguments are passed to \code{RSQLite::dbConnect}.
+#' @param dbname the path to the magnitude file.
+#' @param ... other arguments are passed to \code{RSQLite::dbConnect}.
+#' @return a Magnitude class object.
 #' @keywords internal
 new_magnitude <- function(dbname, ...) {
   con <- RSQLite::dbConnect(RSQLite::SQLite(), dbname, ...)

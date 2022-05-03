@@ -2,22 +2,22 @@
 % Please edit documentation in R/slice.R
 \name{slice_n}
 \alias{slice_n}
-\title{Slice}
+\title{Slice samples from a Magnitude table}
 \usage{
-slice_n(con, n, offset = 0, normalized = FALSE)
+slice_n(con, n, offset = 0, normalized = TRUE)
 }
 \arguments{
-\item{con}{A Magnitude connection.}
+\item{con}{a Magnitude connection.}
 
-\item{n}{Integer.}
+\item{n}{integer.}
 
-\item{offset}{Integer.}
+\item{offset}{integer.}
 
-\item{normalized}{Logical;}
+\item{normalized}{logical;}
 }
 \value{
-A tibble.
+a tibble.
 }
 \description{
-Slice
+Slice samples from a Magnitude table
 }
