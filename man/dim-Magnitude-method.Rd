@@ -6,6 +6,12 @@
 \usage{
 \S4method{dim}{Magnitude}(x)
 }
+\arguments{
+\item{x}{a Magnitude connection.}
+}
+\value{
+numeric vector.
+}
 \description{
 Dimensions of a Magnitude table
 }

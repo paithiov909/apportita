@@ -4,10 +4,10 @@
 \alias{slice_n}
 \title{Slice samples from a Magnitude table}
 \usage{
-slice_n(con, n, offset = 0, normalized = TRUE)
+slice_n(conn, n, offset = 0, normalized = TRUE)
 }
 \arguments{
-\item{con}{a Magnitude connection.}
+\item{conn}{a Magnitude connection.}
 
 \item{n}{integer.}
 

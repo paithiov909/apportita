@@ -15,17 +15,17 @@ calc_simil(
 )
 }
 \arguments{
+\item{conn}{a Magnitude connection.}
+
 \item{keys}{character vector.}
 
 \item{q}{character vector.}
 
 \item{normalized}{logical; whether or not vector embeddings should be normalized?}
 
+\item{method}{string; method to compute similarity.}
+
 \item{...}{other arguments are passed to \code{proxyC::simil}.}
-
-\item{con}{a Magnitude connection.}
-
-\item{mehtod}{string; method to compute similarity.}
 }
 \value{
 a sparse Matrix of 'Matrix' package.

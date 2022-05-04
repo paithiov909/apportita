@@ -15,6 +15,8 @@ most_similar_to_given(
 )
 }
 \arguments{
+\item{conn}{a Magnitude connection.}
+
 \item{key}{string.}
 
 \item{q}{character vector.}
@@ -23,9 +25,7 @@ most_similar_to_given(
 
 \item{normalized}{logical; whether or not vector embeddings should be normalized?}
 
-\item{con}{a Magnitude connection.}
-
-\item{mehtod}{string; method to compute similarity.}
+\item{method}{string; method to compute similarity.}
 }
 \value{
 an ordered named numeric vector of which elements represent similarities to `key`.

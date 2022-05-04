@@ -1,21 +1,24 @@
 Type: Package
 Package: apportita
-Title: Utilities for Handling 'magnitude' Word Embeddings
+Title: Utility for Handling 'magnitude' Word Embeddings
 Version: 0.0.1
 Authors@R: 
     person("Akiru", "Kato", , "paithiov909@gmail.com", role = c("aut", "cre"))
 Maintainer: Akiru Kato <paithiov909@gmail.com>
-Description: More about what it does (maybe more than one line) Use four
-    spaces when indenting paragraphs within the Description.
+Description: A partial R port from 'magnitude', which is a fast, simple
+    utility library for handling vector embeddings. The main goal of this
+    package is to enable access to user's local magnitude data store.
 License: MIT + file LICENSE
 Imports:
     dplyr,
+    methods,
     proxyC,
     purrr,
     rlang,
     RSQLite,
+    stats,
     tibble,
+    transport,
     utils
 Encoding: UTF-8
-LazyData: true
 RoxygenNote: 7.1.2

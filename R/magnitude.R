@@ -43,7 +43,6 @@ highest_entropy_dims <- function(conn) {
   subset(conn@format, key == "entropy")$value
 }
 
-## TODO: remove?
 #' @keywords internal
 max_duplicate_keys <- function(conn) {
   duplicated_key_query <- subset(conn@format, key == "max_duplicate_keys")$value
@@ -56,7 +55,7 @@ max_duplicate_keys <- function(conn) {
     tbl <- RSQLite::dbFetch(res) %>%
       tibble::as_tibble()
     RSQLite::dbClearResult(res)
-    ifelse(rlang::empty(tbl[1, 1]), 1, tbl[1, 1])
+    ifelse(rlang::is_empty(tbl[1, 1]), 1, tbl[1, 1])
   } else {
     duplicated_key_query
   }
@@ -87,6 +86,8 @@ setClass("Magnitude",
 )
 
 #' Dimensions of a Magnitude table
+#' @param x a Magnitude connection.
+#' @return numeric vector.
 #' @export
 setMethod("dim",
   signature = c(x = "Magnitude"),

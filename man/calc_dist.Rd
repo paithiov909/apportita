@@ -23,9 +23,9 @@ calc_dist(
 
 \item{normalized}{logical; whether or not vector embeddings should be normalized?}
 
-\item{...}{other arguments are passed to \code{proxyC::dist}.}
+\item{method}{string; method to compute distance.}
 
-\item{mehtod}{string; method to compute distance.}
+\item{...}{other arguments are passed to \code{proxyC::dist}.}
 }
 \value{
 a sparse Matrix of 'Matrix' package.

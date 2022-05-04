@@ -83,7 +83,7 @@ query <- function(conn, q, normalized = TRUE,
     oov_vec$key <- q
     db_result_to_vec(conn, dplyr::bind_rows(vec, oov_vec), normalized)
   } else {
-    rlang::info(
+    rlang::warn(
       paste(
         "some of keys may be lacking since the Magnitude file does not have subword table",
         "and `normalized` is FALSE."

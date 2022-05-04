@@ -4,7 +4,7 @@
 #' @param keys character vector.
 #' @param q character vector.
 #' @param normalized logical; whether or not vector embeddings should be normalized?
-#' @param mehtod string; method to compute distance.
+#' @param method string; method to compute distance.
 #' @param ... other arguments are passed to \code{proxyC::dist}.
 #' @return a sparse Matrix of 'Matrix' package.
 #' @export

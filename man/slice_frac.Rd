@@ -4,10 +4,10 @@
 \alias{slice_frac}
 \title{Slice samples by frac from a Magnitude table}
 \usage{
-slice_frac(con, frac = 0.001, normalized = TRUE)
+slice_frac(conn, frac = 0.001, normalized = TRUE)
 }
 \arguments{
-\item{con}{a Magnitude connection.}
+\item{conn}{a Magnitude connection.}
 
 \item{frac}{numeric.}
 

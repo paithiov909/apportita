@@ -1,10 +1,10 @@
 #' Calculate similarities from keys to keys
 #'
-#' @param con a Magnitude connection.
+#' @param conn a Magnitude connection.
 #' @param keys character vector.
 #' @param q character vector.
 #' @param normalized logical; whether or not vector embeddings should be normalized?
-#' @param mehtod string; method to compute similarity.
+#' @param method string; method to compute similarity.
 #' @param ... other arguments are passed to \code{proxyC::simil}.
 #' @return a sparse Matrix of 'Matrix' package.
 #' @export
@@ -33,12 +33,12 @@ calc_simil <- function(conn, keys, q, normalized = TRUE,
 
 #' Order keys by their similarity to key
 #'
-#' @param con a Magnitude connection.
+#' @param conn a Magnitude connection.
 #' @param key string.
 #' @param q character vector.
 #' @param n integer.
 #' @param normalized logical; whether or not vector embeddings should be normalized?
-#' @param mehtod string; method to compute similarity.
+#' @param method string; method to compute similarity.
 #' @return an ordered named numeric vector of which elements represent similarities to `key`.
 #' @export
 most_similar_to_given <- function(conn, key, q, n = 1L,

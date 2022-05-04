@@ -4,10 +4,10 @@
 \alias{slice_index}
 \title{Slice samples by index from a Magnitude table}
 \usage{
-slice_index(con, index, normalized = TRUE)
+slice_index(conn, index, normalized = TRUE)
 }
 \arguments{
-\item{con}{a Magnitude connection.}
+\item{conn}{a Magnitude connection.}
 
 \item{index}{integer vector.}
 
