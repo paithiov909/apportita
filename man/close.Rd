@@ -4,10 +4,10 @@
 \alias{close}
 \title{Close a Magnitude connection}
 \usage{
-close(con)
+close(conn)
 }
 \arguments{
-\item{con}{a Magnitude connection.}
+\item{conn}{a Magnitude connection.}
 }
 \value{
 the value from \code{RSQLite::dbDisconnect} is returned invisibly.

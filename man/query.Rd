@@ -2,21 +2,35 @@
 % Please edit documentation in R/query.R
 \name{query}
 \alias{query}
-\title{Query}
+\title{Get vector embeddings of keys}
 \usage{
-query(con, q, normalized = TRUE)
+query(
+  conn,
+  q,
+  normalized = TRUE,
+  ngram_beg = NULL,
+  ngram_end = NULL,
+  topn = 3L
+)
 }
 \arguments{
-\item{con}{A Magnitude connection.}
+\item{conn}{a Magnitude connection.}
 
-\item{q}{Character vector;}
+\item{q}{a character vector.}
 
-\item{normalized}{Logical;}
+\item{normalized}{logical; whether or not vector embeddings should be normalized?}
+
+\item{ngram_beg}{integer. If supplied, the function gets out-of-vocabulary vectors
+by using character ngrams of which length are `ngram_end - ngram_beg`.}
+
+\item{ngram_end}{integer.}
+
+\item{topn}{integer used for making out-of-vocabulary vectors.}
 }
 \value{
-A tibble.
+a tibble.
 }
 \description{
-Handles a query of keys which could be a list (a character vector)
-of keys.
+Get vector embeddings of keys.
+If out of vocabulary, their embeddings would be generated at random.
 }

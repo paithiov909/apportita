@@ -1,54 +1,56 @@
 #' Create a Magnitude connection
 #'
 #' @param path string; path to a magnitude file.
+#' @param ... other arguments are passed to \code{RSQLite::dbConnect}.
 #' @return a Magnitude connection object inheriting
 #' SQLiteConnection class from 'RSQLite' package.
 #' @export
-magnitude <- function(path) {
-  new_magnitude(file.path(path))
+magnitude <- function(path, ...) {
+  new_magnitude(file.path(path), ...)
 }
 
 #' Close a Magnitude connection
 #'
-#' @param con a Magnitude connection.
+#' @param conn a Magnitude connection.
 #' @return the value from \code{RSQLite::dbDisconnect} is returned invisibly.
 #' @export
-close <- function(con) {
-  RSQLite::dbDisconnect(con)
+close <- function(conn) {
+  RSQLite::dbDisconnect(conn)
 }
 
 #' @keywords internal
-precision <- function(con) {
-  subset(con@format, key == "precision")$value
+precision <- function(conn) {
+  subset(conn@format, key == "precision")$value
 }
 
 #' @keywords internal
-subword <- function(con) {
-  subset(con@format, key == "subword")$value
+subword <- function(conn) {
+  subset(conn@format, key == "subword")$value
 }
 
 #' @keywords internal
-subword_start <- function(con) {
-  subset(con@format, key == "subword_start")$value
+subword_start <- function(conn) {
+  subset(conn@format, key == "subword_start")$value
 }
 
 #' @keywords internal
-subword_end <- function(con) {
-  subset(con@format, key == "subword_end")$value
+subword_end <- function(conn) {
+  subset(conn@format, key == "subword_end")$value
 }
 
 #' @keywords internal
-highest_entropy_dims <- function(con) {
-  subset(con@format, key == "entropy")$value
+highest_entropy_dims <- function(conn) {
+  subset(conn@format, key == "entropy")$value
 }
 
+## TODO: remove?
 #' @keywords internal
-max_duplicate_keys <- function(con) {
-  duplicated_key_query <- subset(con@format, key == "max_duplicate_keys")$value
+max_duplicate_keys <- function(conn) {
+  duplicated_key_query <- subset(conn@format, key == "max_duplicate_keys")$value
   if (duplicated_key_query == 0) {
     res <-
       RSQLite::dbSendQuery(
-        con,
+        conn,
         "SELECT MAX(key_count) FROM (SELECT COUNT(key) AS key_count FROM magnitude GROUP BY key);"
       )
     tbl <- RSQLite::dbFetch(res) %>%
@@ -70,11 +72,11 @@ max_duplicate_keys <- function(con) {
 #' @return a Magnitude class object.
 #' @keywords internal
 new_magnitude <- function(dbname, ...) {
-  con <- RSQLite::dbConnect(RSQLite::SQLite(), dbname, ...)
+  conn <- RSQLite::dbConnect(RSQLite::SQLite(), dbname, ...)
   format <-
-    dplyr::tbl(con, "magnitude_format") %>%
+    dplyr::tbl(conn, "magnitude_format") %>%
     dplyr::collect()
-  new("Magnitude", con, format = format)
+  new("Magnitude", conn, format = format)
 }
 
 #' @keywords internal
@@ -89,7 +91,6 @@ setClass("Magnitude",
 setMethod("dim",
   signature = c(x = "Magnitude"),
   function(x) {
-    c(subset(x@format, key == "size")$value,
-      subset(x@format, key == "dim")$value)
+    c(subset(x@format, key == "size")$value, subset(x@format, key == "dim")$value)
   }
 )

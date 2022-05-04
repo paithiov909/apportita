@@ -4,10 +4,12 @@
 \alias{magnitude}
 \title{Create a Magnitude connection}
 \usage{
-magnitude(path)
+magnitude(path, ...)
 }
 \arguments{
 \item{path}{string; path to a magnitude file.}
+
+\item{...}{other arguments are passed to \code{RSQLite::dbConnect}.}
 }
 \value{
 a Magnitude connection object inheriting

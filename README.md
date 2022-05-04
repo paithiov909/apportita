@@ -11,10 +11,10 @@ In other words, apportita would not support streaming access to remote sqlite fi
 
 The package mainly targets the range where the [magnitude-light](https://github.com/davebulaval/magnitude-light) library does, thus some functionality would not be implemented.
 
-- [ ] Querying out-of-vocabulary keys 
+- [x] Querying out-of-vocabulary keys 
 - [ ] `most_similar` querying (`_db_query_similarity`)
 - [ ] `closer_than` querying
-- [ ] Original slicing queries (`slice_frac`, `slice_index`)
+- [x] Original slicing queries (`slice_frac`, `slice_index`)
 
 ## License
 
