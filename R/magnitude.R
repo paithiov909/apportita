@@ -43,7 +43,6 @@ highest_entropy_dims <- function(conn) {
   subset(conn@format, key == "entropy")$value
 }
 
-## TODO: remove?
 #' @keywords internal
 max_duplicate_keys <- function(conn) {
   duplicated_key_query <- subset(conn@format, key == "max_duplicate_keys")$value

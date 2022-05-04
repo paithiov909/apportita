@@ -4,11 +4,11 @@
 \name{apportita-package}
 \alias{apportita}
 \alias{apportita-package}
-\title{apportita: Utilities for Handling 'magnitude' Word Embeddings}
+\title{apportita: Utility for Handling 'magnitude' Word Embeddings}
 \description{
 \if{html}{\figure{logo.png}{options: align='right' alt='logo' width='120'}}
 
-More about what it does (maybe more than one line) Use four spaces when indenting paragraphs within the Description.
+A partial R port from 'magnitude', which is a fast, simple utility library for handling vector embeddings. The main goal of this package is to enable access to user's local magnitude data store.
 }
 \author{
 \strong{Maintainer}: Akiru Kato \email{paithiov909@gmail.com}

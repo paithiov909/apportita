@@ -1,4 +1,4 @@
-#' apportita: Utilities for Handling 'magnitude' Word Embeddings
+#' apportita: Utility for Handling 'magnitude' Word Embeddings
 #' @docType package
 #' @keywords internal
 "_PACKAGE"
@@ -27,14 +27,3 @@ db_result_to_vec <- function(conn, tbl, normalized) {
       ))
   }
 }
-
-#' @keywords internal
-# db_query_similarity <- function(con, positive, negative,
-#                                 min_similarity,
-#                                 topn = 10L,
-#                                 exclude_keys = NULL,
-#                                 return_similarities = FALSE,
-#                                 method = "distance",
-#                                 effort = 1.0) {
-#   NULL
-# }
