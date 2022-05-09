@@ -10,7 +10,7 @@ query(
   normalized = TRUE,
   ngram_beg = NULL,
   ngram_end = NULL,
-  topn = 3L
+  topn = 5L
 )
 }
 \arguments{

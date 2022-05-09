@@ -5,3 +5,5 @@
 
 *.png	binary
 *.svg	binary
+
+*.magnitude	binary

@@ -57,8 +57,8 @@ doesnt_match <- function(conn, key, q, n = 1L,
   }
   q <- unique(q[which(!q %in% key, arr.ind = TRUE)])
   n <- ifelse(n > length(q), length(q), n)
-  simil <-
+  dist <-
     as.matrix(calc_dist(conn, key[1], q, normalized, method))
-  ix <- sort(simil, decreasing = TRUE, index.return = TRUE)$ix
-  purrr::set_names(simil[1, ix], names(simil[1, ix]))[1:n]
+  ix <- sort(dist, decreasing = TRUE, index.return = TRUE)$ix
+  purrr::set_names(dist[1, ix], names(dist[1, ix]))[1:n]
 }

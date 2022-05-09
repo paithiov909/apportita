@@ -15,7 +15,7 @@
 query <- function(conn, q, normalized = TRUE,
                   ngram_beg = NULL,
                   ngram_end = NULL,
-                  topn = 3L) {
+                  topn = 5L) {
   if (missing(ngram_beg)) {
     ngram_beg <- subword_start(conn)
   }
@@ -49,19 +49,18 @@ query <- function(conn, q, normalized = TRUE,
         purrr::map(~ embed(., n)[, n:1]) %>%
         purrr::map_dfr(~ as.data.frame(t(.))) %>%
         dplyr::summarise(across(where(is.character), ~ paste0(., collapse = "")))
-      # icecream::ic(paste0(ngrams[1, ], collapse = " OR "))
-      similar_keys_vec <-
+      res <-
         RSQLite::dbSendQuery(conn, search_query,
           params = list(
             paste0(ngrams[1, ], collapse = " OR "),
             as.integer(topn)
           )
         )
-      res <- RSQLite::dbFetch(similar_keys_vec)
-      RSQLite::dbClearResult(similar_keys_vec)
+      similar_keys_vec <- RSQLite::dbFetch(res)
+      RSQLite::dbClearResult(res)
 
       ## FIXME: better random vector
-      if (nrow(res) == 0) {
+      if (nrow(similar_keys_vec) == 0) {
         tibble::as_tibble(
           matrix(scale(runif(1 * dim(conn)[2], -1, 1)),
             nrow = 1,
@@ -72,10 +71,10 @@ query <- function(conn, q, normalized = TRUE,
         )
       } else {
         tibble::as_tibble(
-          matrix(scale(runif(nrow(res) * dim(conn)[2], -1, 1)),
-            nrow = nrow(res),
+          matrix(scale(runif(nrow(similar_keys_vec) * dim(conn)[2], -1, 1)),
+            nrow = nrow(similar_keys_vec),
             ncol = dim(conn)[2]
-          ) * .3 + dplyr::select(res, !c("key", "magnitude")) * .7
+          ) * .3 + dplyr::select(similar_keys_vec, !c("key", "magnitude")) * .7
         ) %>%
           dplyr::summarise(across(where(is.double), ~ mean(.)))
       }

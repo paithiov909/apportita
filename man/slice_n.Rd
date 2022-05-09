@@ -13,7 +13,7 @@ slice_n(conn, n, offset = 0, normalized = TRUE)
 
 \item{offset}{integer.}
 
-\item{normalized}{logical;}
+\item{normalized}{logical; whether or not vector embeddings should be normalized?}
 }
 \value{
 a tibble.

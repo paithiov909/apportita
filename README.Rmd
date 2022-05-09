@@ -33,6 +33,64 @@ The package mainly targets the range where the [magnitude-light](https://github.
 - [x] Original slicing queries (`slice_frac`, `slice_index`)
 - [ ] tests and examples
 
+## Usage
+
+### Construct a Magnitude connection
+
+```{r load_file}
+## apportita includes a sample magnitude file
+## trained with `movie_review` dataset from 'text2vec' package.
+conn <- apportita::magnitude(system.file("magnitude/w2v_en_sample.magnitude", package = "apportita"))
+
+dim(conn) ## check the dimension of Magnitude table
+```
+
+Remember close the connection after querying to the Magnitude table.
+
+```r
+apportita::close(conn)
+```
+
+### Querying
+
+```{r query}
+apportita::query(conn, c("i", "watch", "a", "movie"))
+
+apportita::doesnt_match(conn, "book", c("i", "love", "movie"), n = 3)
+
+apportita::most_similar_to_given(conn, "book", c("i", "love", "movie"), n = 3)
+```
+
+### Calculate distance/similarity from words to words
+
+Apportita supports methods provided in the [proxyC](https://github.com/koheiw/proxyC) package for calculating distances and similarities.
+
+```{r calc}
+apportita::calc_dist(conn, "book", c("i", "love", "movie"))
+
+apportita::calc_simil(conn, "book", c("i", "love", "movie"))
+```
+
+Experimentally, `apportita::calc_wrd` also supports computing the Word Rotator's Distance, which is a textual similarity measure based on optimal transport, presented in <https://arxiv.org/abs/2004.15003>.
+
+```{r wrd}
+apportita::calc_wrd(conn, c("i", "love", "movie"), c("the", "movie", "shows", "blue", "sky"))
+```
+
+### Slicing samples
+
+```{r slice}
+apportita::slice_n(conn, n = 2, offset = 5)
+
+apportita::slice_index(conn, index = c(20, 100, 600))
+
+apportita::slice_frac(conn, frac = .01)
+```
+
+```{r close_conn, include=FALSE}
+apportita::close(conn)
+```
+
 ## License
 
 MIT license. Icons made by [Freepik](https://www.freepik.com) from

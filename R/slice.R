@@ -3,7 +3,7 @@
 #' @param conn a Magnitude connection.
 #' @param n integer.
 #' @param offset integer.
-#' @param normalized logical;
+#' @param normalized logical; whether or not vector embeddings should be normalized?
 #' @return a tibble.
 #' @export
 slice_n <- function(conn, n, offset = 0, normalized = TRUE) {
@@ -27,7 +27,7 @@ slice_n <- function(conn, n, offset = 0, normalized = TRUE) {
 #'
 #' @param conn a Magnitude connection.
 #' @param index integer vector.
-#' @param normalized logical;
+#' @param normalized logical; whether or not vector embeddings should be normalized?
 #' @return a tibble.
 #' @export
 slice_index <- function(conn, index, normalized = TRUE) {
@@ -46,11 +46,11 @@ slice_index <- function(conn, index, normalized = TRUE) {
   db_result_to_vec(conn, tbl, normalized)
 }
 
-#' Slice samples by frac from a Magnitude table
+#' Slice samples by fraction from a Magnitude table
 #'
 #' @param conn a Magnitude connection.
 #' @param frac numeric.
-#' @param normalized logical;
+#' @param normalized logical; whether or not vector embeddings should be normalized?
 #' @return a tibble.
 #' @export
 slice_frac <- function(conn, frac = .001, normalized = TRUE) {

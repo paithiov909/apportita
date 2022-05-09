@@ -2,7 +2,7 @@
 % Please edit documentation in R/slice.R
 \name{slice_frac}
 \alias{slice_frac}
-\title{Slice samples by frac from a Magnitude table}
+\title{Slice samples by fraction from a Magnitude table}
 \usage{
 slice_frac(conn, frac = 0.001, normalized = TRUE)
 }
@@ -11,11 +11,11 @@ slice_frac(conn, frac = 0.001, normalized = TRUE)
 
 \item{frac}{numeric.}
 
-\item{normalized}{logical;}
+\item{normalized}{logical; whether or not vector embeddings should be normalized?}
 }
 \value{
 a tibble.
 }
 \description{
-Slice samples by frac from a Magnitude table
+Slice samples by fraction from a Magnitude table
 }
