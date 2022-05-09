@@ -64,12 +64,20 @@ apportita::query(conn, c("i", "watch", "a", "movie"))
 #> #   dim_18 <dbl>, dim_19 <dbl>
 
 apportita::doesnt_match(conn, "book", c("i", "love", "movie"), n = 3)
-#>         i      love     movie 
-#> 0.9480003 0.7461417 0.6085849
+#> # A tibble: 3 × 2
+#>   keys  distance
+#>   <chr>    <dbl>
+#> 1 i        0.948
+#> 2 love     0.746
+#> 3 movie    0.609
 
 apportita::most_similar(conn, "book", c("i", "love", "movie"), n = 3)
-#>     movie      love         i 
-#> 0.8148123 0.7216363 0.5506478
+#> # A tibble: 3 × 2
+#>   keys  similarity
+#>   <chr>      <dbl>
+#> 1 movie      0.815
+#> 2 love       0.722
+#> 3 i          0.551
 ```
 
 ### Calculate distance/similarity from words to words
@@ -125,18 +133,18 @@ apportita::slice_index(conn, index = c(20, 100, 600))
 
 apportita::slice_frac(conn, frac = .01)
 #> # A tibble: 127 × 21
-#>    key     dim_0    dim_1   dim_2   dim_3   dim_4   dim_5    dim_6   dim_7 dim_8
-#>    <chr>   <dbl>    <dbl>   <dbl>   <dbl>   <dbl>   <dbl>    <dbl>   <dbl> <dbl>
-#>  1 marc    0.472 -0.0843  -0.191  -0.260  -0.155  -0.187  -0.0286   0.279  0.167
-#>  2 schell  0.155  0.121   -0.113  -0.300   0.0883 -0.0321  0.0231   0.169  0.288
-#>  3 obser…  0.401 -0.307    0.149   0.219  -0.163  -0.114  -0.0374  -0.0848 0.391
-#>  4 dylan   0.276 -0.00328 -0.106  -0.340   0.0757 -0.117   0.0369   0.248  0.283
-#>  5 reno    0.210  0.103   -0.134  -0.350   0.0602 -0.0873  0.0148   0.228  0.301
-#>  6 raised  0.447 -0.0411  -0.186  -0.299  -0.0983 -0.201  -0.0252   0.320  0.192
-#>  7 teen    0.424 -0.0567  -0.199  -0.406  -0.166  -0.341  -0.0131   0.343  0.117
-#>  8 maslin -0.290  0.147    0.0222 -0.0675 -0.303  -0.189  -0.0544   0.0876 0.165
-#>  9 karlo…  0.345 -0.00816 -0.118  -0.288  -0.0224 -0.115  -0.00692  0.225  0.264
-#> 10 nowhe…  0.455 -0.0728  -0.0350 -0.209  -0.158  -0.311  -0.201    0.338  0.283
+#>    key       dim_0   dim_1   dim_2  dim_3   dim_4  dim_5    dim_6   dim_7  dim_8
+#>    <chr>     <dbl>   <dbl>   <dbl>  <dbl>   <dbl>  <dbl>    <dbl>   <dbl>  <dbl>
+#>  1 serva…  0.496   -0.165  -0.0951 -0.190 -0.118  -0.105 -0.0201   0.215   0.223
+#>  2 attac… -0.00958  0.0700  0.254   0.106  0.0382  0.174  0.213   -0.291   0.180
+#>  3 cartw… -0.366   -0.0995  0.0764 -0.274 -0.110  -0.232  0.190   -0.162   0.321
+#>  4 rohm    0.265    0.0554 -0.122  -0.339  0.0458 -0.133  0.00185  0.244   0.287
+#>  5 compa… -0.191    0.0344  0.321  -0.134 -0.334   0.265  0.383    0.0901 -0.234
+#>  6 joined  0.387   -0.0429 -0.197  -0.215 -0.0908 -0.388 -0.282    0.324   0.230
+#>  7 withe…  0.0510   0.364  -0.381  -0.316 -0.310  -0.111  0.0350   0.266  -0.111
+#>  8 shut    0.391   -0.0326 -0.153  -0.398 -0.124  -0.348 -0.182    0.395   0.357
+#>  9 inher…  0.208   -0.126  -0.351  -0.243 -0.0720  0.124 -0.381    0.0240 -0.236
+#> 10 layer…  0.426   -0.0343 -0.154  -0.314 -0.0547 -0.216 -0.0429   0.299   0.203
 #> # … with 117 more rows, and 11 more variables: dim_9 <dbl>, dim_10 <dbl>,
 #> #   dim_11 <dbl>, dim_12 <dbl>, dim_13 <dbl>, dim_14 <dbl>, dim_15 <dbl>,
 #> #   dim_16 <dbl>, dim_17 <dbl>, dim_18 <dbl>, dim_19 <dbl>
@@ -144,5 +152,7 @@ apportita::slice_frac(conn, frac = .01)
 
 ## License
 
-MIT license. Icons made by [Freepik](https://www.freepik.com) from
+MIT license.
+
+Icons made by [Freepik](https://www.freepik.com) from
 [www.flaticon.com](https://www.flaticon.com/).

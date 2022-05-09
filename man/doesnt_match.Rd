@@ -28,7 +28,7 @@ doesnt_match(
 \item{method}{string; method to compute distance.}
 }
 \value{
-an ordered named numeric vector of which elements represent distances to `key`.
+a tibble.
 }
 \description{
 Order keys by their distances to key

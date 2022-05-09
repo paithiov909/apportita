@@ -28,7 +28,7 @@ most_similar(
 \item{method}{string; method to compute similarity.}
 }
 \value{
-an ordered named numeric vector of which elements represent similarities to `key`.
+a tibble.
 }
 \description{
 Order keys by their similarity to key

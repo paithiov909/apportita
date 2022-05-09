@@ -38,7 +38,7 @@ calc_dist <- function(conn, keys, q, normalized = TRUE,
 #' @param n integer.
 #' @param normalized logical; whether or not vector embeddings should be normalized?
 #' @param method string; method to compute distance.
-#' @return an ordered named numeric vector of which elements represent distances to `key`.
+#' @return a tibble.
 #' @export
 doesnt_match <- function(conn, key, q, n = 1L,
                          normalized = TRUE,
@@ -60,5 +60,5 @@ doesnt_match <- function(conn, key, q, n = 1L,
   dist <-
     as.matrix(calc_dist(conn, key[1], q, normalized, method))
   ix <- sort(dist, decreasing = TRUE, index.return = TRUE)$ix
-  purrr::set_names(dist[1, ix], names(dist[1, ix]))[1:n]
+  head(tibble::tibble(keys = names(dist[1, ix]), distance = dist[1, ix]), n)
 }

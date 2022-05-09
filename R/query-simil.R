@@ -39,7 +39,7 @@ calc_simil <- function(conn, keys, q, normalized = TRUE,
 #' @param n integer.
 #' @param normalized logical; whether or not vector embeddings should be normalized?
 #' @param method string; method to compute similarity.
-#' @return an ordered named numeric vector of which elements represent similarities to `key`.
+#' @return a tibble.
 #' @export
 most_similar <- function(conn, key, q, n = 1L,
                          normalized = TRUE,
@@ -62,5 +62,6 @@ most_similar <- function(conn, key, q, n = 1L,
   simil <-
     as.matrix(calc_simil(conn, key[1], q, normalized, method))
   ix <- sort(simil, decreasing = TRUE, index.return = TRUE)$ix
-  purrr::set_names(simil[1, ix], names(simil[1, ix]))[1:n]
+  head(tibble::tibble(keys = names(simil[1, ix]), similarity = simil[1, ix]), n)
+
 }
