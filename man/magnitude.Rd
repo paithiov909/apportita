@@ -7,7 +7,7 @@
 magnitude(path, ...)
 }
 \arguments{
-\item{path}{string; path to a magnitude file.}
+\item{path}{string; a path to a magnitude file.}
 
 \item{...}{other arguments are passed to \code{RSQLite::dbConnect}.}
 }

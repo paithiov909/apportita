@@ -10,7 +10,7 @@
 \item{x}{a Magnitude connection.}
 }
 \value{
-numeric vector.
+a numeric vector.
 }
 \description{
 Dimensions of a Magnitude table

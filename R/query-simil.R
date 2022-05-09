@@ -41,19 +41,19 @@ calc_simil <- function(conn, keys, q, normalized = TRUE,
 #' @param method string; method to compute similarity.
 #' @return an ordered named numeric vector of which elements represent similarities to `key`.
 #' @export
-most_similar_to_given <- function(conn, key, q, n = 1L,
-                                  normalized = TRUE,
-                                  method = c(
-                                    "cosine",
-                                    "correlation",
-                                    "jaccard",
-                                    "ejaccard",
-                                    "dice",
-                                    "edice",
-                                    "hamann",
-                                    "simple matching",
-                                    "faith"
-                                  )) {
+most_similar <- function(conn, key, q, n = 1L,
+                         normalized = TRUE,
+                         method = c(
+                           "cosine",
+                           "correlation",
+                           "jaccard",
+                           "ejaccard",
+                           "dice",
+                           "edice",
+                           "hamann",
+                           "simple matching",
+                           "faith"
+                         )) {
   if (length(key) != 1L) {
     rlang::warn("length of `key` is not 1L. the first element will be used.")
   }

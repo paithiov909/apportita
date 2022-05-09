@@ -15,7 +15,7 @@ knitr::opts_chunk$set(
 
 # apportita <a href='https://paithiov909.github.io/apportita'><img src='man/figures/logo.png' align="right" height="139" /></a>
 
-> [WIP] Utility for Handling 'magnitude' Word Embeddings
+> Utility for Handling 'magnitude' Word Embeddings
 
 <!-- badges: start -->
 <!-- badges: end -->
@@ -27,7 +27,7 @@ Apportita is a partial R port from [plasticityai/magnitude](https://github.com/p
 Apportita would cover only partial features of the original Magnitude library. The main goal of this package is to enable access to user's local magnitude data store.
 In other words, apportita would not support streaming access to remote sqlite files.
 
-The package mainly targets the range where the [magnitude-light](https://github.com/davebulaval/magnitude-light) library does, thus some functionality would not be implemented.
+The package mainly targets the range where the [magnitude-light](https://github.com/davebulaval/magnitude-light) library does, thus some functionalities would not be implemented.
 
 - [x] Querying for out-of-vocabulary keys 
 - [x] Original slicing queries (`slice_frac`, `slice_index`)
@@ -38,6 +38,8 @@ The package mainly targets the range where the [magnitude-light](https://github.
 ### Construct a Magnitude connection
 
 ```{r load_file}
+library(apportita)
+
 ## apportita includes a sample magnitude file
 ## trained with `movie_review` dataset from 'text2vec' package.
 conn <- apportita::magnitude(system.file("magnitude/w2v_en_sample.magnitude", package = "apportita"))
@@ -45,10 +47,10 @@ conn <- apportita::magnitude(system.file("magnitude/w2v_en_sample.magnitude", pa
 dim(conn) ## check the dimension of Magnitude table
 ```
 
-Remember close the connection after querying to the Magnitude table.
+Remember to close the connection after querying to the Magnitude table.
 
 ```r
-apportita::close(conn)
+close(conn)
 ```
 
 ### Querying
@@ -58,7 +60,7 @@ apportita::query(conn, c("i", "watch", "a", "movie"))
 
 apportita::doesnt_match(conn, "book", c("i", "love", "movie"), n = 3)
 
-apportita::most_similar_to_given(conn, "book", c("i", "love", "movie"), n = 3)
+apportita::most_similar(conn, "book", c("i", "love", "movie"), n = 3)
 ```
 
 ### Calculate distance/similarity from words to words
@@ -88,7 +90,7 @@ apportita::slice_frac(conn, frac = .01)
 ```
 
 ```{r close_conn, include=FALSE}
-apportita::close(conn)
+close(conn)
 ```
 
 ## License

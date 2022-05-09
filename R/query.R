@@ -1,3 +1,24 @@
+#' Check if keys exist in a Magnitude table?
+#'
+#' @param conn a Magnitude connection.
+#' @param keys a character vector.
+#' @return a tibble.
+#' @export
+has_exact <- function(conn, keys) {
+  vec <-
+    dplyr::tbl(conn, "magnitude") %>%
+    dplyr::select(.data$key) %>%
+    dplyr::filter(.data$key %in% keys) %>%
+    dplyr::collect()
+  tibble::tibble(
+    keys = keys,
+    exists = ifelse(seq_along(keys) %in% which(keys %in% dplyr::pull(vec, "key"), arr.ind = TRUE),
+      TRUE,
+      FALSE
+    )
+  )
+}
+
 #' Get vector embeddings of keys
 #'
 #' Get vector embeddings of keys.
@@ -43,6 +64,7 @@ query <- function(conn, q, normalized = TRUE,
     )
     oov_vec <- purrr::map_dfr(q, function(key) {
       n <- ngram_end - ngram_beg
+      ## FIXME: fix the way to make character ngrams
       ngrams <-
         paste0(bow, key, eow) %>%
         strsplit(split = "") %>%

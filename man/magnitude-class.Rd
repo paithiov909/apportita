@@ -8,7 +8,7 @@
 new_magnitude(dbname, ...)
 }
 \arguments{
-\item{dbname}{the path to the magnitude file.}
+\item{dbname}{a path to the magnitude file.}
 
 \item{...}{other arguments are passed to \code{RSQLite::dbConnect}.}
 }

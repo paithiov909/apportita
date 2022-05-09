@@ -1,21 +1,12 @@
 #' Create a Magnitude connection
 #'
-#' @param path string; path to a magnitude file.
+#' @param path string; a path to a magnitude file.
 #' @param ... other arguments are passed to \code{RSQLite::dbConnect}.
 #' @return a Magnitude connection object inheriting
 #' SQLiteConnection class from 'RSQLite' package.
 #' @export
 magnitude <- function(path, ...) {
   new_magnitude(file.path(path), ...)
-}
-
-#' Close a Magnitude connection
-#'
-#' @param conn a Magnitude connection.
-#' @return the value from \code{RSQLite::dbDisconnect} is returned invisibly.
-#' @export
-close <- function(conn) {
-  RSQLite::dbDisconnect(conn)
 }
 
 #' @keywords internal
@@ -78,7 +69,7 @@ max_duplicate_keys <- function(conn) {
 #' Connection object to a magnitude file.
 #'
 #' @name magnitude-class
-#' @param dbname the path to the magnitude file.
+#' @param dbname a path to the magnitude file.
 #' @param ... other arguments are passed to \code{RSQLite::dbConnect}.
 #' @return a Magnitude class object.
 #' @keywords internal
@@ -99,7 +90,7 @@ setClass("Magnitude",
 
 #' Dimensions of a Magnitude table
 #' @param x a Magnitude connection.
-#' @return numeric vector.
+#' @return a numeric vector.
 #' @export
 setMethod("dim",
   signature = c(x = "Magnitude"),
@@ -111,5 +102,16 @@ setMethod("dim",
       dplyr::filter(.data$key == "dim") %>%
       dplyr::pull("value")
     c(rows, cols)
+  }
+)
+
+#' Close a Magnitude connection
+#' @param con a Magnitude connection.
+#' @return the value from \code{RSQLite::dbDisconnect} is returned invisibly.
+#' @export
+setMethod("close",
+  signature = c(con = "Magnitude"),
+  function(con) {
+    RSQLite::dbDisconnect(con)
   }
 )
