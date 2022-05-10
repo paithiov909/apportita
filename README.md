@@ -3,8 +3,6 @@
 
 # apportita <a href='https://paithiov909.github.io/apportita'><img src='man/figures/logo.png' align="right" height="139" /></a>
 
-> Utility for Handling ‘magnitude’ Word Embeddings
-
 <!-- badges: start -->
 
 [![R-CMD-check](https://github.com/paithiov909/apportita/workflows/R-CMD-check/badge.svg)](https://github.com/paithiov909/apportita/actions)
@@ -129,21 +127,21 @@ apportita::slice_index(conn, index = c(20, 100, 600))
 
 apportita::slice_frac(conn, frac = .01)
 #> # A tibble: 127 × 21
-#>    key           dim_0   dim_1   dim_2   dim_3   dim_4    dim_5    dim_6   dim_7
-#>    <chr>         <dbl>   <dbl>   <dbl>   <dbl>   <dbl>    <dbl>    <dbl>   <dbl>
-#>  1 flipping     0.344  -0.310  -0.0268 -0.195   0.0926  0.142    0.266    0.216 
-#>  2 dern        -0.104  -0.281   0.324  -0.168   0.0829 -0.257   -0.217    0.316 
-#>  3 mexican      0.450   0.0287 -0.186  -0.296  -0.102  -0.222   -0.0810   0.304 
-#>  4 supports    -0.0775  0.192   0.0801  0.0655  0.202  -0.217   -0.106   -0.373 
-#>  5 slave        0.477  -0.0774 -0.153  -0.268  -0.102  -0.191   -0.0314   0.308 
-#>  6 burns        0.126   0.104  -0.0768 -0.281   0.118  -0.00677  0.00832  0.121 
-#>  7 competitive  0.154   0.0976 -0.113   0.133   0.195   0.227    0.306   -0.0258
-#>  8 renaissance -0.237  -0.382  -0.343  -0.0237 -0.252  -0.318   -0.308   -0.113 
-#>  9 singin       0.0710 -0.403   0.121  -0.276  -0.443  -0.205   -0.0251   0.105 
-#> 10 kurosawa     0.305   0.0496 -0.137  -0.300   0.0214 -0.107   -0.0189   0.244 
-#> # … with 117 more rows, and 12 more variables: dim_8 <dbl>, dim_9 <dbl>,
-#> #   dim_10 <dbl>, dim_11 <dbl>, dim_12 <dbl>, dim_13 <dbl>, dim_14 <dbl>,
-#> #   dim_15 <dbl>, dim_16 <dbl>, dim_17 <dbl>, dim_18 <dbl>, dim_19 <dbl>
+#>    key    dim_0   dim_1   dim_2   dim_3   dim_4   dim_5    dim_6   dim_7   dim_8
+#>    <chr>  <dbl>   <dbl>   <dbl>   <dbl>   <dbl>   <dbl>    <dbl>   <dbl>   <dbl>
+#>  1 rewa… -0.249 -0.153   0.255  -0.104  -0.332  -0.143  -0.175    0.0281  0.324 
+#>  2 uber   0.449 -0.0329 -0.196  -0.232  -0.113  -0.139  -0.0416   0.265   0.177 
+#>  3 atte…  0.133 -0.134  -0.244  -0.140   0.243   0.223   0.176    0.231   0.311 
+#>  4 late… -0.396  0.426  -0.386  -0.0213 -0.0372 -0.204   0.0451   0.0377 -0.170 
+#>  5 sein…  0.231  0.0852 -0.114  -0.335   0.0491 -0.117  -0.00987  0.227   0.295 
+#>  6 mani… -0.355  0.204   0.267   0.307  -0.105  -0.129   0.0565  -0.181   0.360 
+#>  7 coun…  0.335  0.186  -0.259  -0.292   0.287  -0.0746  0.372   -0.236  -0.135 
+#>  8 sits  -0.151  0.242   0.357   0.131  -0.296   0.351   0.233    0.0952 -0.0265
+#>  9 comp… -0.191  0.0344  0.321  -0.134  -0.334   0.265   0.383    0.0901 -0.234 
+#> 10 neig… -0.148  0.293   0.0111 -0.198   0.204   0.0945  0.0269   0.385  -0.0447
+#> # … with 117 more rows, and 11 more variables: dim_9 <dbl>, dim_10 <dbl>,
+#> #   dim_11 <dbl>, dim_12 <dbl>, dim_13 <dbl>, dim_14 <dbl>, dim_15 <dbl>,
+#> #   dim_16 <dbl>, dim_17 <dbl>, dim_18 <dbl>, dim_19 <dbl>
 ```
 
 ## License
