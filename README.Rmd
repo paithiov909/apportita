@@ -18,20 +18,15 @@ knitr::opts_chunk$set(
 > Utility for Handling 'magnitude' Word Embeddings
 
 <!-- badges: start -->
+[![R-CMD-check](https://github.com/paithiov909/apportita/workflows/R-CMD-check/badge.svg)](https://github.com/paithiov909/apportita/actions)
 <!-- badges: end -->
 
 Apportita is a partial R port from [plasticityai/magnitude](https://github.com/plasticityai/magnitude), which is a fast, simple utility library for handling vector embeddings.
-
-## Roadmap
 
 Apportita would cover only partial features of the original Magnitude library. The main goal of this package is to enable access to user's local magnitude data store.
 In other words, apportita would not support streaming access to remote sqlite files.
 
 The package mainly targets the range where the [magnitude-light](https://github.com/davebulaval/magnitude-light) library does, thus some functionalities would not be implemented.
-
-- [x] Querying for out-of-vocabulary keys 
-- [x] Original slicing queries (`slice_frac`, `slice_index`)
-- [ ] tests and examples
 
 ## Usage
 

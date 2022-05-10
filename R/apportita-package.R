@@ -4,8 +4,8 @@
 "_PACKAGE"
 
 #' @import dplyr
-#' @import dbplyr
 #' @import RSQLite
+#' @importFrom dbplyr %>%
 #' @importFrom methods new
 #' @importFrom rlang enquo enquos .data := as_name as_label
 #' @importFrom stats runif

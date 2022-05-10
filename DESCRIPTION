@@ -9,6 +9,9 @@ Description: A partial R port from 'magnitude', which is a fast, simple
     utility library for handling vector embeddings. The main goal of this
     package is to enable access to user's local magnitude data store.
 License: MIT + file LICENSE
+URL: https://github.com/paithiov909/apportita,
+    https://paithiov909.github.io/apportita/
+BugReports: https://github.com/paithiov909/apportita/issues
 Imports:
     dbplyr,
     dplyr,

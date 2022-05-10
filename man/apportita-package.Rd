@@ -10,6 +10,15 @@
 
 A partial R port from 'magnitude', which is a fast, simple utility library for handling vector embeddings. The main goal of this package is to enable access to user's local magnitude data store.
 }
+\seealso{
+Useful links:
+\itemize{
+  \item \url{https://github.com/paithiov909/apportita}
+  \item \url{https://paithiov909.github.io/apportita/}
+  \item Report bugs at \url{https://github.com/paithiov909/apportita/issues}
+}
+
+}
 \author{
 \strong{Maintainer}: Akiru Kato \email{paithiov909@gmail.com}
 

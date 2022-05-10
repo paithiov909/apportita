@@ -6,13 +6,13 @@
 > Utility for Handling ‘magnitude’ Word Embeddings
 
 <!-- badges: start -->
+
+[![R-CMD-check](https://github.com/paithiov909/apportita/workflows/R-CMD-check/badge.svg)](https://github.com/paithiov909/apportita/actions)
 <!-- badges: end -->
 
 Apportita is a partial R port from
 [plasticityai/magnitude](https://github.com/plasticityai/magnitude),
 which is a fast, simple utility library for handling vector embeddings.
-
-## Roadmap
 
 Apportita would cover only partial features of the original Magnitude
 library. The main goal of this package is to enable access to user’s
@@ -22,10 +22,6 @@ streaming access to remote sqlite files.
 The package mainly targets the range where the
 [magnitude-light](https://github.com/davebulaval/magnitude-light)
 library does, thus some functionalities would not be implemented.
-
--   [x] Querying for out-of-vocabulary keys
--   [x] Original slicing queries (`slice_frac`, `slice_index`)
--   [ ] tests and examples
 
 ## Usage
 
@@ -133,21 +129,21 @@ apportita::slice_index(conn, index = c(20, 100, 600))
 
 apportita::slice_frac(conn, frac = .01)
 #> # A tibble: 127 × 21
-#>    key       dim_0   dim_1   dim_2  dim_3   dim_4  dim_5    dim_6   dim_7  dim_8
-#>    <chr>     <dbl>   <dbl>   <dbl>  <dbl>   <dbl>  <dbl>    <dbl>   <dbl>  <dbl>
-#>  1 serva…  0.496   -0.165  -0.0951 -0.190 -0.118  -0.105 -0.0201   0.215   0.223
-#>  2 attac… -0.00958  0.0700  0.254   0.106  0.0382  0.174  0.213   -0.291   0.180
-#>  3 cartw… -0.366   -0.0995  0.0764 -0.274 -0.110  -0.232  0.190   -0.162   0.321
-#>  4 rohm    0.265    0.0554 -0.122  -0.339  0.0458 -0.133  0.00185  0.244   0.287
-#>  5 compa… -0.191    0.0344  0.321  -0.134 -0.334   0.265  0.383    0.0901 -0.234
-#>  6 joined  0.387   -0.0429 -0.197  -0.215 -0.0908 -0.388 -0.282    0.324   0.230
-#>  7 withe…  0.0510   0.364  -0.381  -0.316 -0.310  -0.111  0.0350   0.266  -0.111
-#>  8 shut    0.391   -0.0326 -0.153  -0.398 -0.124  -0.348 -0.182    0.395   0.357
-#>  9 inher…  0.208   -0.126  -0.351  -0.243 -0.0720  0.124 -0.381    0.0240 -0.236
-#> 10 layer…  0.426   -0.0343 -0.154  -0.314 -0.0547 -0.216 -0.0429   0.299   0.203
-#> # … with 117 more rows, and 11 more variables: dim_9 <dbl>, dim_10 <dbl>,
-#> #   dim_11 <dbl>, dim_12 <dbl>, dim_13 <dbl>, dim_14 <dbl>, dim_15 <dbl>,
-#> #   dim_16 <dbl>, dim_17 <dbl>, dim_18 <dbl>, dim_19 <dbl>
+#>    key           dim_0   dim_1   dim_2   dim_3   dim_4    dim_5    dim_6   dim_7
+#>    <chr>         <dbl>   <dbl>   <dbl>   <dbl>   <dbl>    <dbl>    <dbl>   <dbl>
+#>  1 flipping     0.344  -0.310  -0.0268 -0.195   0.0926  0.142    0.266    0.216 
+#>  2 dern        -0.104  -0.281   0.324  -0.168   0.0829 -0.257   -0.217    0.316 
+#>  3 mexican      0.450   0.0287 -0.186  -0.296  -0.102  -0.222   -0.0810   0.304 
+#>  4 supports    -0.0775  0.192   0.0801  0.0655  0.202  -0.217   -0.106   -0.373 
+#>  5 slave        0.477  -0.0774 -0.153  -0.268  -0.102  -0.191   -0.0314   0.308 
+#>  6 burns        0.126   0.104  -0.0768 -0.281   0.118  -0.00677  0.00832  0.121 
+#>  7 competitive  0.154   0.0976 -0.113   0.133   0.195   0.227    0.306   -0.0258
+#>  8 renaissance -0.237  -0.382  -0.343  -0.0237 -0.252  -0.318   -0.308   -0.113 
+#>  9 singin       0.0710 -0.403   0.121  -0.276  -0.443  -0.205   -0.0251   0.105 
+#> 10 kurosawa     0.305   0.0496 -0.137  -0.300   0.0214 -0.107   -0.0189   0.244 
+#> # … with 117 more rows, and 12 more variables: dim_8 <dbl>, dim_9 <dbl>,
+#> #   dim_10 <dbl>, dim_11 <dbl>, dim_12 <dbl>, dim_13 <dbl>, dim_14 <dbl>,
+#> #   dim_15 <dbl>, dim_16 <dbl>, dim_17 <dbl>, dim_18 <dbl>, dim_19 <dbl>
 ```
 
 ## License
