@@ -10,6 +10,7 @@ Description: A partial R port from 'magnitude', which is a fast, simple
     package is to enable access to user's local magnitude data store.
 License: MIT + file LICENSE
 Imports:
+    dbplyr,
     dplyr,
     methods,
     proxyC,
@@ -20,5 +21,8 @@ Imports:
     tibble,
     transport,
     utils
+Suggests: 
+    testthat (>= 3.0.0)
+Config/testthat/edition: 3
 Encoding: UTF-8
 RoxygenNote: 7.1.2

@@ -34,7 +34,7 @@ calc_dist <- function(conn, keys, q, normalized = TRUE,
 #'
 #' @param conn a Magnitude connection.
 #' @param key string.
-#' @param q character vector.
+#' @param q character vector. elements exact same with key will be dropped from result.
 #' @param n integer.
 #' @param normalized logical; whether or not vector embeddings should be normalized?
 #' @param method string; method to compute distance.
@@ -59,6 +59,10 @@ doesnt_match <- function(conn, key, q, n = 1L,
   n <- ifelse(n > length(q), length(q), n)
   dist <-
     as.matrix(calc_dist(conn, key[1], q, normalized, method))
-  ix <- sort(dist, decreasing = TRUE, index.return = TRUE)$ix
-  head(tibble::tibble(keys = names(dist[1, ix]), distance = dist[1, ix]), n)
+  tibble::tibble(
+    keys = colnames(dist),
+    distance = dist[1, ]
+  ) %>%
+    dplyr::arrange(desc(.data$distance)) %>%
+    dplyr::slice_head(n = n)
 }

@@ -35,7 +35,7 @@ calc_simil <- function(conn, keys, q, normalized = TRUE,
 #'
 #' @param conn a Magnitude connection.
 #' @param key string.
-#' @param q character vector.
+#' @param q character vector. elements exact same with key will be dropped from result.
 #' @param n integer.
 #' @param normalized logical; whether or not vector embeddings should be normalized?
 #' @param method string; method to compute similarity.
@@ -61,7 +61,10 @@ most_similar <- function(conn, key, q, n = 1L,
   n <- ifelse(n > length(q), length(q), n)
   simil <-
     as.matrix(calc_simil(conn, key[1], q, normalized, method))
-  ix <- sort(simil, decreasing = TRUE, index.return = TRUE)$ix
-  head(tibble::tibble(keys = names(simil[1, ix]), similarity = simil[1, ix]), n)
-
+  tibble::tibble(
+    keys = colnames(simil),
+    similarity = simil[1, ]
+  ) %>%
+    dplyr::arrange(desc(.data$similarity)) %>%
+    dplyr::slice_head(n = n)
 }
