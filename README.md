@@ -5,6 +5,8 @@
 
 <!-- badges: start -->
 
+[![apportita status
+badge](https://paithiov909.r-universe.dev/badges/apportita)](https://paithiov909.r-universe.dev)
 [![R-CMD-check](https://github.com/paithiov909/apportita/workflows/R-CMD-check/badge.svg)](https://github.com/paithiov909/apportita/actions)
 <!-- badges: end -->
 
@@ -127,21 +129,21 @@ apportita::slice_index(conn, index = c(20, 100, 600))
 
 apportita::slice_frac(conn, frac = .01)
 #> # A tibble: 127 × 21
-#>    key    dim_0   dim_1   dim_2   dim_3   dim_4   dim_5    dim_6   dim_7   dim_8
-#>    <chr>  <dbl>   <dbl>   <dbl>   <dbl>   <dbl>   <dbl>    <dbl>   <dbl>   <dbl>
-#>  1 rewa… -0.249 -0.153   0.255  -0.104  -0.332  -0.143  -0.175    0.0281  0.324 
-#>  2 uber   0.449 -0.0329 -0.196  -0.232  -0.113  -0.139  -0.0416   0.265   0.177 
-#>  3 atte…  0.133 -0.134  -0.244  -0.140   0.243   0.223   0.176    0.231   0.311 
-#>  4 late… -0.396  0.426  -0.386  -0.0213 -0.0372 -0.204   0.0451   0.0377 -0.170 
-#>  5 sein…  0.231  0.0852 -0.114  -0.335   0.0491 -0.117  -0.00987  0.227   0.295 
-#>  6 mani… -0.355  0.204   0.267   0.307  -0.105  -0.129   0.0565  -0.181   0.360 
-#>  7 coun…  0.335  0.186  -0.259  -0.292   0.287  -0.0746  0.372   -0.236  -0.135 
-#>  8 sits  -0.151  0.242   0.357   0.131  -0.296   0.351   0.233    0.0952 -0.0265
-#>  9 comp… -0.191  0.0344  0.321  -0.134  -0.334   0.265   0.383    0.0901 -0.234 
-#> 10 neig… -0.148  0.293   0.0111 -0.198   0.204   0.0945  0.0269   0.385  -0.0447
-#> # … with 117 more rows, and 11 more variables: dim_9 <dbl>, dim_10 <dbl>,
-#> #   dim_11 <dbl>, dim_12 <dbl>, dim_13 <dbl>, dim_14 <dbl>, dim_15 <dbl>,
-#> #   dim_16 <dbl>, dim_17 <dbl>, dim_18 <dbl>, dim_19 <dbl>
+#>    key         dim_0   dim_1   dim_2    dim_3   dim_4   dim_5    dim_6   dim_7
+#>    <chr>       <dbl>   <dbl>   <dbl>    <dbl>   <dbl>   <dbl>    <dbl>   <dbl>
+#>  1 framing   -0.217  -0.219  -0.222   0.163   -0.283  -0.0904 -0.0736  -0.363 
+#>  2 amusement -0.0711 -0.0767  0.0619  0.351   -0.277  -0.118  -0.169   -0.0786
+#>  3 does       0.339   0.0933 -0.143   0.131    0.345  -0.0985  0.0791   0.167 
+#>  4 devilish   0.376   0.261  -0.0357  0.00566 -0.169  -0.214   0.232   -0.305 
+#>  5 eve       -0.0545 -0.179   0.214   0.246    0.357   0.305   0.280   -0.0350
+#>  6 robbins    0.276   0.323  -0.251  -0.171   -0.140  -0.178   0.00751 -0.161 
+#>  7 hurts      0.0422  0.415  -0.0246  0.116    0.205  -0.325   0.279    0.140 
+#>  8 exists    -0.285  -0.286  -0.319   0.180    0.455   0.132   0.0227  -0.387 
+#>  9 concert   -0.105   0.336  -0.0863  0.196   -0.145  -0.285   0.155   -0.0114
+#> 10 kennedy    0.192   0.123  -0.129  -0.314    0.0686 -0.0938 -0.0158   0.209 
+#> # … with 117 more rows, and 12 more variables: dim_8 <dbl>, dim_9 <dbl>,
+#> #   dim_10 <dbl>, dim_11 <dbl>, dim_12 <dbl>, dim_13 <dbl>, dim_14 <dbl>,
+#> #   dim_15 <dbl>, dim_16 <dbl>, dim_17 <dbl>, dim_18 <dbl>, dim_19 <dbl>
 ```
 
 ## License

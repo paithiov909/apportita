@@ -16,6 +16,7 @@ knitr::opts_chunk$set(
 # apportita <a href='https://paithiov909.github.io/apportita'><img src='man/figures/logo.png' align="right" height="139" /></a>
 
 <!-- badges: start -->
+[![apportita status badge](https://paithiov909.r-universe.dev/badges/apportita)](https://paithiov909.r-universe.dev)
 [![R-CMD-check](https://github.com/paithiov909/apportita/workflows/R-CMD-check/badge.svg)](https://github.com/paithiov909/apportita/actions)
 <!-- badges: end -->
 
