@@ -2,7 +2,7 @@
 % Please edit documentation in R/query-dist.R
 \name{doesnt_match}
 \alias{doesnt_match}
-\title{Order keys by their distances to key}
+\title{Order keys by their distances to a key}
 \usage{
 doesnt_match(
   conn,
@@ -31,5 +31,5 @@ doesnt_match(
 a tibble.
 }
 \description{
-Order keys by their distances to key
+Order keys by their distances to a key
 }

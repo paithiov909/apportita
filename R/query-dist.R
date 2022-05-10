@@ -30,7 +30,7 @@ calc_dist <- function(conn, keys, q, normalized = TRUE,
   proxyC::dist(x, y, method = method, ...)
 }
 
-#' Order keys by their distances to key
+#' Order keys by their distances to a key
 #'
 #' @param conn a Magnitude connection.
 #' @param key string.

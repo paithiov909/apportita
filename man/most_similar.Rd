@@ -2,7 +2,7 @@
 % Please edit documentation in R/query-simil.R
 \name{most_similar}
 \alias{most_similar}
-\title{Order keys by their similarity to key}
+\title{Order keys by their similarity to a key}
 \usage{
 most_similar(
   conn,
@@ -31,5 +31,5 @@ most_similar(
 a tibble.
 }
 \description{
-Order keys by their similarity to key
+Order keys by their similarity to a key
 }

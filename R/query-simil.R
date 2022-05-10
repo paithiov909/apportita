@@ -31,7 +31,7 @@ calc_simil <- function(conn, keys, q, normalized = TRUE,
   proxyC::simil(x, y, method = method, ...)
 }
 
-#' Order keys by their similarity to key
+#' Order keys by their similarity to a key
 #'
 #' @param conn a Magnitude connection.
 #' @param key string.
