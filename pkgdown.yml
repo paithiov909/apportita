@@ -1,8 +1,8 @@
-pandoc: 2.7.3
-pkgdown: 2.0.3
+pandoc: 2.19.2
+pkgdown: 2.0.7
 pkgdown_sha: ~
 articles: {}
-last_built: 2022-05-14T01:07Z
+last_built: 2022-12-22T18:51Z
 urls:
   reference: https://paithiov909.github.io/apportita/reference
   article: https://paithiov909.github.io/apportita/articles
