@@ -18,14 +18,14 @@ db_result_to_vec <- function(conn, tbl, normalized) {
   if (!normalized) {
     magnitude <- dplyr::pull(tbl, .data$magnitude)
     tbl %>%
-      dplyr::select(!.data$magnitude) %>%
+      dplyr::select(!"magnitude") %>%
       dplyr::mutate(across(
         where(is.numeric),
         ~ . * (as.double(magnitude) / as.double(10**prec))
       ))
   } else {
     tbl %>%
-      dplyr::select(!.data$magnitude) %>%
+      dplyr::select(!"magnitude") %>%
       dplyr::mutate(across(
         where(is.numeric),
         ~ . / as.double(10**prec)

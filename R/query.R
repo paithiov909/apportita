@@ -7,7 +7,7 @@
 has_exact <- function(conn, keys) {
   vec <-
     dplyr::tbl(conn, "magnitude") %>%
-    dplyr::select(.data$key) %>%
+    dplyr::select("key") %>%
     dplyr::filter(.data$key %in% keys) %>%
     dplyr::collect()
   tibble::tibble(

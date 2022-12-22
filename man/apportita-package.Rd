@@ -6,7 +6,7 @@
 \alias{apportita-package}
 \title{apportita: Utility for Handling 'magnitude' Word Embeddings}
 \description{
-\if{html}{\figure{logo.png}{options: align='right' alt='logo' width='120'}}
+\if{html}{\figure{logo.png}{options: style='float: right' alt='logo' width='120'}}
 
 A partial R port from 'magnitude', which is a fast, simple utility library for handling vector embeddings. The main goal of this package is to enable access to user's local magnitude data store.
 }

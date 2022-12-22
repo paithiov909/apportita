@@ -1,7 +1,7 @@
 Type: Package
 Package: apportita
 Title: Utility for Handling 'magnitude' Word Embeddings
-Version: 0.0.1
+Version: 0.0.2
 Authors@R: 
     person("Akiru", "Kato", , "paithiov909@gmail.com", role = c("aut", "cre"))
 Maintainer: Akiru Kato <paithiov909@gmail.com>
@@ -28,4 +28,4 @@ Suggests:
     testthat (>= 3.0.0)
 Config/testthat/edition: 3
 Encoding: UTF-8
-RoxygenNote: 7.1.2
+RoxygenNote: 7.2.3
