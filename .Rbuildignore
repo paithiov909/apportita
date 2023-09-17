@@ -4,5 +4,6 @@
 ^docs$
 ^pkgdown$
 ^_pkgdown\.yml$
+^renovate\.json$
 ^README\.Rmd$
 ^LICENSE\.md$
