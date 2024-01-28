@@ -1,8 +1,8 @@
 Type: Package
 Package: apportita
 Title: Utility for Handling 'magnitude' Word Embeddings
-Version: 0.0.2
-Authors@R: 
+Version: 0.0.3
+Authors@R:
     person("Akiru", "Kato", , "paithiov909@gmail.com", role = c("aut", "cre"))
 Maintainer: Akiru Kato <paithiov909@gmail.com>
 Description: A partial R port from 'magnitude', which is a fast, simple
@@ -24,8 +24,8 @@ Imports:
     tibble,
     transport,
     utils
-Suggests: 
+Suggests:
     testthat (>= 3.0.0)
 Config/testthat/edition: 3
 Encoding: UTF-8
-RoxygenNote: 7.2.3
+RoxygenNote: 7.3.1

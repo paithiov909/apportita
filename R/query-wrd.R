@@ -39,10 +39,10 @@ wrd <- function(x, y, ...) {
 #' @export
 calc_wrd <- function(conn, keys, q, normalized = TRUE, ...) {
   x <- query(conn, keys, normalized) %>%
-    tibble::column_to_rownames("key") %>%
+    dplyr::select(!"key") %>%
     as.matrix()
   y <- query(conn, q, normalized) %>%
-    tibble::column_to_rownames("key") %>%
+    dplyr::select(!"key") %>%
     as.matrix()
   wrd(x, y, ...)
 }
