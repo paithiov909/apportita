@@ -3,10 +3,11 @@
 #' @param conn a Magnitude connection.
 #' @param keys character vector.
 #' @param q character vector.
-#' @param normalized logical; whether or not vector embeddings should be normalized?
+#' @param normalized logical;
+#' whether or not vector embeddings should be normalized?
 #' @param method string; method to compute similarity.
 #' @param ... other arguments are passed to \code{proxyC::simil}.
-#' @return a sparse Matrix of 'Matrix' package.
+#' @returns a sparse Matrix of 'Matrix' package.
 #' @export
 calc_simil <- function(conn, keys, q, normalized = TRUE,
                        method = c(
@@ -35,11 +36,13 @@ calc_simil <- function(conn, keys, q, normalized = TRUE,
 #'
 #' @param conn a Magnitude connection.
 #' @param key string.
-#' @param q character vector. elements exact same with key will be dropped from result.
+#' @param q character vector.
+#' elements exact same with key will be dropped from result.
 #' @param n integer.
-#' @param normalized logical; whether or not vector embeddings should be normalized?
+#' @param normalized logical;
+#' whether or not vector embeddings should be normalized?
 #' @param method string; method to compute similarity.
-#' @return a tibble.
+#' @returns a tibble.
 #' @export
 most_similar <- function(conn, key, q, n = 1L,
                          normalized = TRUE,

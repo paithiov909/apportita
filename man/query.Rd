@@ -18,9 +18,11 @@ query(
 
 \item{q}{a character vector.}
 
-\item{normalized}{logical; whether or not vector embeddings should be normalized?}
+\item{normalized}{logical;
+whether or not vector embeddings should be normalized?}
 
-\item{ngram_beg}{integer. If supplied, the function gets out-of-vocabulary vectors
+\item{ngram_beg}{integer.
+If supplied, the function gets out-of-vocabulary vectors
 by using character ngrams of which length are `ngram_end - ngram_beg`.}
 
 \item{ngram_end}{integer.}

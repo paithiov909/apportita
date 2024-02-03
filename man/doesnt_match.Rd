@@ -19,11 +19,13 @@ doesnt_match(
 
 \item{key}{string.}
 
-\item{q}{character vector. elements exact same with key will be dropped from result.}
+\item{q}{character vector.
+elements exact same with key will be dropped from result.}
 
 \item{n}{integer.}
 
-\item{normalized}{logical; whether or not vector embeddings should be normalized?}
+\item{normalized}{logical;
+whether or not vector embeddings should be normalized?}
 
 \item{method}{string; method to compute distance.}
 }

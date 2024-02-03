@@ -1,15 +1,13 @@
-#' apportita: Utility for Handling 'magnitude' Word Embeddings
-#' @docType package
-#' @keywords internal
-"_PACKAGE"
-
 #' @import dplyr
 #' @import RSQLite
 #' @importFrom dbplyr %>%
 #' @importFrom methods new
-#' @importFrom rlang enquo enquos .data := as_name as_label
+#' @importFrom rlang enquo enquos .data .env := as_name as_label
 #' @importFrom stats runif
 #' @importFrom utils globalVariables
+#' @keywords internal
+"_PACKAGE"
+
 utils::globalVariables("where")
 
 #' @keywords internal

@@ -11,7 +11,8 @@ wrd(x, y, ...)
 
 \item{y}{a dense or sparse matrix.}
 
-\item{...}{other arguments are passed to \code{transport::wasserstein} interenally.}
+\item{...}{other arguments are passed
+to \code{transport::wasserstein} interenally.}
 }
 \value{
 numeric scalar.

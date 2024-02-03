@@ -13,9 +13,11 @@ calc_wrd(conn, keys, q, normalized = TRUE, ...)
 
 \item{q}{character vector.}
 
-\item{normalized}{logical; whether or not vector embeddings should be normalized?}
+\item{normalized}{logical;
+whether or not vector embeddings should be normalized?}
 
-\item{...}{other arguments are passed to \code{transport::wasserstein} internally.}
+\item{...}{other arguments are passed
+to \code{transport::wasserstein} internally.}
 }
 \value{
 numeric scalar.

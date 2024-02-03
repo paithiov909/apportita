@@ -11,7 +11,8 @@ slice_frac(conn, frac = 0.001, normalized = TRUE)
 
 \item{frac}{numeric.}
 
-\item{normalized}{logical; whether or not vector embeddings should be normalized?}
+\item{normalized}{logical;
+whether or not vector embeddings should be normalized?}
 }
 \value{
 a tibble.

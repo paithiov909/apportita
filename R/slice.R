@@ -3,8 +3,9 @@
 #' @param conn a Magnitude connection.
 #' @param n integer.
 #' @param offset integer.
-#' @param normalized logical; whether or not vector embeddings should be normalized?
-#' @return a tibble.
+#' @param normalized logical;
+#' whether or not vector embeddings should be normalized?
+#' @returns a tibble.
 #' @export
 slice_n <- function(conn, n, offset = 0, normalized = TRUE) {
   n <- n[1]
@@ -27,8 +28,9 @@ slice_n <- function(conn, n, offset = 0, normalized = TRUE) {
 #'
 #' @param conn a Magnitude connection.
 #' @param index integer vector.
-#' @param normalized logical; whether or not vector embeddings should be normalized?
-#' @return a tibble.
+#' @param normalized logical;
+#' whether or not vector embeddings should be normalized?
+#' @returns a tibble.
 #' @export
 slice_index <- function(conn, index, normalized = TRUE) {
   if (max(index) > dim(conn)[1]) {
@@ -50,8 +52,9 @@ slice_index <- function(conn, index, normalized = TRUE) {
 #'
 #' @param conn a Magnitude connection.
 #' @param frac numeric.
-#' @param normalized logical; whether or not vector embeddings should be normalized?
-#' @return a tibble.
+#' @param normalized logical;
+#' whether or not vector embeddings should be normalized?
+#' @returns a tibble.
 #' @export
 slice_frac <- function(conn, frac = .001, normalized = TRUE) {
   if (frac > 1) {

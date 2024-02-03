@@ -3,10 +3,11 @@
 #' @param conn a Magnitude connection.
 #' @param keys character vector.
 #' @param q character vector.
-#' @param normalized logical; whether or not vector embeddings should be normalized?
+#' @param normalized logical;
+#' whether or not vector embeddings should be normalized?
 #' @param method string; method to compute distance.
 #' @param ... other arguments are passed to \code{proxyC::dist}.
-#' @return a sparse Matrix of 'Matrix' package.
+#' @returns a sparse Matrix of 'Matrix' package.
 #' @export
 calc_dist <- function(conn, keys, q, normalized = TRUE,
                       method = c(
@@ -34,11 +35,13 @@ calc_dist <- function(conn, keys, q, normalized = TRUE,
 #'
 #' @param conn a Magnitude connection.
 #' @param key string.
-#' @param q character vector. elements exact same with key will be dropped from result.
+#' @param q character vector.
+#' elements exact same with key will be dropped from result.
 #' @param n integer.
-#' @param normalized logical; whether or not vector embeddings should be normalized?
+#' @param normalized logical;
+#' whether or not vector embeddings should be normalized?
 #' @param method string; method to compute distance.
-#' @return a tibble.
+#' @returns a tibble.
 #' @export
 doesnt_match <- function(conn, key, q, n = 1L,
                          normalized = TRUE,

@@ -2,7 +2,7 @@
 #'
 #' @param conn a Magnitude connection.
 #' @param keys a character vector.
-#' @return a tibble.
+#' @returns a tibble.
 #' @export
 has_exact <- function(conn, keys) {
   vec <-
@@ -12,7 +12,8 @@ has_exact <- function(conn, keys) {
     dplyr::collect()
   tibble::tibble(
     keys = keys,
-    exists = ifelse(seq_along(keys) %in% which(keys %in% dplyr::pull(vec, "key"), arr.ind = TRUE),
+    exists = ifelse(
+      seq_along(keys) %in% which(keys %in% dplyr::pull(vec, "key"), arr.ind = TRUE),
       TRUE,
       FALSE
     )
@@ -26,12 +27,14 @@ has_exact <- function(conn, keys) {
 #'
 #' @param conn a Magnitude connection.
 #' @param q a character vector.
-#' @param normalized logical; whether or not vector embeddings should be normalized?
-#' @param ngram_beg integer. If supplied, the function gets out-of-vocabulary vectors
+#' @param normalized logical;
+#' whether or not vector embeddings should be normalized?
+#' @param ngram_beg integer.
+#' If supplied, the function gets out-of-vocabulary vectors
 #' by using character ngrams of which length are `ngram_end - ngram_beg`.
 #' @param ngram_end integer.
 #' @param topn integer used for making out-of-vocabulary vectors.
-#' @return a tibble.
+#' @returns a tibble.
 #' @export
 query <- function(conn, q, normalized = TRUE,
                   ngram_beg = NULL,

@@ -21,7 +21,8 @@ calc_dist(
 
 \item{q}{character vector.}
 
-\item{normalized}{logical; whether or not vector embeddings should be normalized?}
+\item{normalized}{logical;
+whether or not vector embeddings should be normalized?}
 
 \item{method}{string; method to compute distance.}
 

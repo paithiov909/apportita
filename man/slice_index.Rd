@@ -11,7 +11,8 @@ slice_index(conn, index, normalized = TRUE)
 
 \item{index}{integer vector.}
 
-\item{normalized}{logical; whether or not vector embeddings should be normalized?}
+\item{normalized}{logical;
+whether or not vector embeddings should be normalized?}
 }
 \value{
 a tibble.

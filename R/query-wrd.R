@@ -14,8 +14,9 @@ row_norms <- function(x, type = "2") {
 #'
 #' @param x a dense or sparse matrix.
 #' @param y a dense or sparse matrix.
-#' @param ... other arguments are passed to \code{transport::wasserstein} interenally.
-#' @return numeric scalar.
+#' @param ... other arguments are passed
+#' to \code{transport::wasserstein} interenally.
+#' @returns numeric scalar.
 #' @export
 wrd <- function(x, y, ...) {
   x_norm <- row_norms(x)
@@ -33,9 +34,11 @@ wrd <- function(x, y, ...) {
 #' @param conn a Magnitude connection.
 #' @param keys character vector.
 #' @param q character vector.
-#' @param normalized logical; whether or not vector embeddings should be normalized?
-#' @param ... other arguments are passed to \code{transport::wasserstein} internally.
-#' @return numeric scalar.
+#' @param normalized logical;
+#' whether or not vector embeddings should be normalized?
+#' @param ... other arguments are passed
+#' to \code{transport::wasserstein} internally.
+#' @returns numeric scalar.
 #' @export
 calc_wrd <- function(conn, keys, q, normalized = TRUE, ...) {
   x <- query(conn, keys, normalized) %>%
