@@ -1,6 +1,6 @@
 #' @keywords internal
-row_norms <- function(x, type = "2") {
-  purrr::map_dbl(seq_len(nrow(x)), ~ norm(x[., ], type))
+row_norms <- function(x) {
+  sqrt(rowSums(x^2))
 }
 
 #' Calculate Word Rotator's Distance
