@@ -1,69 +1,25 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url>
-    <loc>https://paithiov909.github.io/apportita/404.html</loc>
-  </url>
-  <url>
-    <loc>https://paithiov909.github.io/apportita/LICENSE-text.html</loc>
-  </url>
-  <url>
-    <loc>https://paithiov909.github.io/apportita/LICENSE.html</loc>
-  </url>
-  <url>
-    <loc>https://paithiov909.github.io/apportita/authors.html</loc>
-  </url>
-  <url>
-    <loc>https://paithiov909.github.io/apportita/index.html</loc>
-  </url>
-  <url>
-    <loc>https://paithiov909.github.io/apportita/reference/apportita-package.html</loc>
-  </url>
-  <url>
-    <loc>https://paithiov909.github.io/apportita/reference/calc_dist.html</loc>
-  </url>
-  <url>
-    <loc>https://paithiov909.github.io/apportita/reference/calc_simil.html</loc>
-  </url>
-  <url>
-    <loc>https://paithiov909.github.io/apportita/reference/calc_wrd.html</loc>
-  </url>
-  <url>
-    <loc>https://paithiov909.github.io/apportita/reference/close-Magnitude-method.html</loc>
-  </url>
-  <url>
-    <loc>https://paithiov909.github.io/apportita/reference/dim-Magnitude-method.html</loc>
-  </url>
-  <url>
-    <loc>https://paithiov909.github.io/apportita/reference/doesnt_match.html</loc>
-  </url>
-  <url>
-    <loc>https://paithiov909.github.io/apportita/reference/has_exact.html</loc>
-  </url>
-  <url>
-    <loc>https://paithiov909.github.io/apportita/reference/index.html</loc>
-  </url>
-  <url>
-    <loc>https://paithiov909.github.io/apportita/reference/magnitude-class.html</loc>
-  </url>
-  <url>
-    <loc>https://paithiov909.github.io/apportita/reference/magnitude.html</loc>
-  </url>
-  <url>
-    <loc>https://paithiov909.github.io/apportita/reference/most_similar.html</loc>
-  </url>
-  <url>
-    <loc>https://paithiov909.github.io/apportita/reference/query.html</loc>
-  </url>
-  <url>
-    <loc>https://paithiov909.github.io/apportita/reference/slice_frac.html</loc>
-  </url>
-  <url>
-    <loc>https://paithiov909.github.io/apportita/reference/slice_index.html</loc>
-  </url>
-  <url>
-    <loc>https://paithiov909.github.io/apportita/reference/slice_n.html</loc>
-  </url>
-  <url>
-    <loc>https://paithiov909.github.io/apportita/reference/wrd.html</loc>
-  </url>
+<urlset xmlns = 'http://www.sitemaps.org/schemas/sitemap/0.9'>
+<url><loc>https://paithiov909.github.io/apportita/404.html</loc></url>
+<url><loc>https://paithiov909.github.io/apportita/LICENSE-text.html</loc></url>
+<url><loc>https://paithiov909.github.io/apportita/LICENSE.html</loc></url>
+<url><loc>https://paithiov909.github.io/apportita/authors.html</loc></url>
+<url><loc>https://paithiov909.github.io/apportita/index.html</loc></url>
+<url><loc>https://paithiov909.github.io/apportita/reference/apportita-package.html</loc></url>
+<url><loc>https://paithiov909.github.io/apportita/reference/calc_dist.html</loc></url>
+<url><loc>https://paithiov909.github.io/apportita/reference/calc_simil.html</loc></url>
+<url><loc>https://paithiov909.github.io/apportita/reference/calc_wrd.html</loc></url>
+<url><loc>https://paithiov909.github.io/apportita/reference/close-Magnitude-method.html</loc></url>
+<url><loc>https://paithiov909.github.io/apportita/reference/dim-Magnitude-method.html</loc></url>
+<url><loc>https://paithiov909.github.io/apportita/reference/doesnt_match.html</loc></url>
+<url><loc>https://paithiov909.github.io/apportita/reference/has_exact.html</loc></url>
+<url><loc>https://paithiov909.github.io/apportita/reference/index.html</loc></url>
+<url><loc>https://paithiov909.github.io/apportita/reference/magnitude-class.html</loc></url>
+<url><loc>https://paithiov909.github.io/apportita/reference/magnitude.html</loc></url>
+<url><loc>https://paithiov909.github.io/apportita/reference/most_similar.html</loc></url>
+<url><loc>https://paithiov909.github.io/apportita/reference/query.html</loc></url>
+<url><loc>https://paithiov909.github.io/apportita/reference/slice_frac.html</loc></url>
+<url><loc>https://paithiov909.github.io/apportita/reference/slice_index.html</loc></url>
+<url><loc>https://paithiov909.github.io/apportita/reference/slice_n.html</loc></url>
+<url><loc>https://paithiov909.github.io/apportita/reference/wrd.html</loc></url>
 </urlset>
+
