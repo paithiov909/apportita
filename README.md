@@ -5,8 +5,6 @@
 
 <!-- badges: start -->
 
-[![apportita status
-badge](https://paithiov909.r-universe.dev/badges/apportita)](https://paithiov909.r-universe.dev)
 [![R-CMD-check](https://github.com/paithiov909/apportita/workflows/R-CMD-check/badge.svg)](https://github.com/paithiov909/apportita/actions)
 <!-- badges: end -->
 
