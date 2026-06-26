@@ -11,43 +11,43 @@ magnitude <- function(path, ...) {
 
 #' @keywords internal
 precision <- function(conn) {
-  conn@format %>%
-    dplyr::filter(.data$key == "precision") %>%
+  conn@format |>
+    dplyr::filter(.data$key == "precision") |>
     dplyr::pull("value")
 }
 
 #' @keywords internal
 subword <- function(conn) {
-  conn@format %>%
-    dplyr::filter(.data$key == "subword") %>%
+  conn@format |>
+    dplyr::filter(.data$key == "subword") |>
     dplyr::pull("value")
 }
 
 #' @keywords internal
 subword_start <- function(conn) {
-  conn@format %>%
-    dplyr::filter(.data$key == "subword_start") %>%
+  conn@format |>
+    dplyr::filter(.data$key == "subword_start") |>
     dplyr::pull("value")
 }
 
 #' @keywords internal
 subword_end <- function(conn) {
-  conn@format %>%
-    dplyr::filter(.data$key == "subword_end") %>%
+  conn@format |>
+    dplyr::filter(.data$key == "subword_end") |>
     dplyr::pull("value")
 }
 
 #' @keywords internal
 highest_entropy_dims <- function(conn) {
-  conn@format %>%
-    dplyr::filter(.data$key == "entropy") %>%
+  conn@format |>
+    dplyr::filter(.data$key == "entropy") |>
     dplyr::pull("value")
 }
 
 #' @keywords internal
 max_duplicate_keys <- function(conn) {
-  duplicated_key <- conn@format %>%
-    dplyr::filter(.data$key == "max_duplicate_key") %>%
+  duplicated_key <- conn@format |>
+    dplyr::filter(.data$key == "max_duplicate_key") |>
     dplyr::pull("value")
   if (duplicated_key == 0) {
     res <-
@@ -55,10 +55,10 @@ max_duplicate_keys <- function(conn) {
         conn,
         "SELECT MAX(key_count) FROM (SELECT COUNT(key) AS key_count FROM magnitude GROUP BY key);"
       )
-    tbl <- RSQLite::dbFetch(res) %>%
-      tibble::as_tibble()
+    tbl <- RSQLite::dbFetch(res) |>
+      dplyr::as_tibble()
     RSQLite::dbClearResult(res)
-    ifelse(rlang::is_empty(tbl[1, 1]), 1, tbl[1, 1])
+    if (rlang::is_empty(tbl[1, 1])) 1 else tbl[1, 1]
   } else {
     duplicated_key
   }
@@ -76,7 +76,7 @@ max_duplicate_keys <- function(conn) {
 new_magnitude <- function(dbname, ...) {
   conn <- RSQLite::dbConnect(RSQLite::SQLite(), dbname, ...)
   format <-
-    dplyr::tbl(conn, "magnitude_format") %>%
+    dplyr::tbl(conn, "magnitude_format") |>
     dplyr::collect()
   new("Magnitude", conn, format = format)
 }
@@ -95,11 +95,11 @@ setClass("Magnitude",
 setMethod("dim",
   signature = c(x = "Magnitude"),
   function(x) {
-    rows <- x@format %>%
-      dplyr::filter(.data$key == "size") %>%
+    rows <- x@format |>
+      dplyr::filter(.data$key == "size") |>
       dplyr::pull("value")
-    cols <- x@format %>%
-      dplyr::filter(.data$key == "dim") %>%
+    cols <- x@format |>
+      dplyr::filter(.data$key == "dim") |>
       dplyr::pull("value")
     c(rows, cols)
   }

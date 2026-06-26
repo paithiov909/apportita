@@ -23,11 +23,11 @@ calc_simil <- function(conn, keys, q, normalized = TRUE,
                        ),
                        ...) {
   method <- rlang::arg_match(method)
-  x <- query(conn, keys, normalized) %>%
-    tibble::column_to_rownames("key") %>%
+  x <- query(conn, keys, normalized) |>
+    tibble::column_to_rownames("key") |>
     as.matrix()
-  y <- query(conn, q, normalized) %>%
-    tibble::column_to_rownames("key") %>%
+  y <- query(conn, q, normalized) |>
+    tibble::column_to_rownames("key") |>
     as.matrix()
   proxyC::simil(x, y, method = method, ...)
 }
@@ -61,13 +61,13 @@ most_similar <- function(conn, key, q, n = 1L,
     rlang::warn("length of `key` is not 1L. the first element will be used.")
   }
   q <- unique(q[which(!q %in% key, arr.ind = TRUE)])
-  n <- ifelse(n > length(q), length(q), n)
+  n <- if (n > length(q)) length(q) else n
   simil <-
     as.matrix(calc_simil(conn, key[1], q, normalized, method))
-  tibble::tibble(
+  dplyr::tibble(
     keys = colnames(simil),
     similarity = simil[1, ]
-  ) %>%
-    dplyr::arrange(desc(.data$similarity)) %>%
+  ) |>
+    dplyr::arrange(dplyr::desc(.data$similarity)) |>
     dplyr::slice_head(n = n)
 }

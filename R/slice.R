@@ -18,8 +18,8 @@ slice_n <- function(conn, n, offset = 0, normalized = TRUE) {
       "SELECT * FROM magnitude LIMIT ? OFFSET ?",
       params = list(as.integer(n), as.integer(offset))
     )
-  tbl <- RSQLite::dbFetch(res) %>%
-    tibble::as_tibble()
+  tbl <- RSQLite::dbFetch(res) |>
+    dplyr::as_tibble()
   RSQLite::dbClearResult(res)
   db_result_to_vec(conn, tbl, normalized)
 }
@@ -42,8 +42,8 @@ slice_index <- function(conn, index, normalized = TRUE) {
       "SELECT * FROM magnitude WHERE ROWID IN (?)",
       params = list(index)
     )
-  tbl <- RSQLite::dbFetch(res) %>%
-    tibble::as_tibble()
+  tbl <- RSQLite::dbFetch(res) |>
+    dplyr::as_tibble()
   RSQLite::dbClearResult(res)
   db_result_to_vec(conn, tbl, normalized)
 }

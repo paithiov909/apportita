@@ -6,11 +6,11 @@
 #' @export
 has_exact <- function(conn, keys) {
   vec <-
-    dplyr::tbl(conn, "magnitude") %>%
-    dplyr::select("key") %>%
-    dplyr::filter(.data$key %in% keys) %>%
+    dplyr::tbl(conn, "magnitude") |>
+    dplyr::select("key") |>
+    dplyr::filter(.data$key %in% keys) |>
     dplyr::collect()
-  tibble::tibble(
+  dplyr::tibble(
     keys = keys,
     exists = ifelse(
       seq_along(keys) %in% which(keys %in% dplyr::pull(vec, "key"), arr.ind = TRUE),
@@ -47,8 +47,8 @@ query <- function(conn, q, normalized = TRUE,
     ngram_end <- subword_end(conn)
   }
   vec <-
-    dplyr::tbl(conn, "magnitude") %>%
-    dplyr::filter(.data$key %in% q) %>%
+    dplyr::tbl(conn, "magnitude") |>
+    dplyr::filter(.data$key %in% q) |>
     dplyr::collect()
 
   q <- q[which(!q %in% dplyr::pull(vec, "key"), arr.ind = TRUE)]
@@ -69,11 +69,11 @@ query <- function(conn, q, normalized = TRUE,
       n <- ngram_end - ngram_beg
       ## FIXME: fix the way to make character ngrams
       ngrams <-
-        paste0(bow, key, eow) %>%
-        strsplit(split = "") %>%
-        purrr::map(~ embed(., n)[, n:1]) %>%
-        purrr::map_dfr(~ as.data.frame(t(.))) %>%
-        dplyr::summarise(across(where(is.character), ~ paste0(., collapse = "")))
+        paste0(bow, key, eow) |>
+        strsplit(split = "") |>
+        purrr::map(~ embed(., n)[, n:1]) |>
+        purrr::map_dfr(~ as.data.frame(t(.))) |>
+        dplyr::summarise(dplyr::across(dplyr::where(is.character), ~ paste0(., collapse = "")))
       res <-
         RSQLite::dbSendQuery(conn, search_query,
           params = list(
@@ -86,7 +86,7 @@ query <- function(conn, q, normalized = TRUE,
 
       ## FIXME: better random vector
       if (nrow(similar_keys_vec) == 0) {
-        tibble::as_tibble(
+        dplyr::as_tibble(
           matrix(scale(runif(1 * dim(conn)[2], -1, 1)),
             nrow = 1,
             ncol = dim(conn)[2],
@@ -95,13 +95,13 @@ query <- function(conn, q, normalized = TRUE,
           .name_repair = ~ paste("dim", .x, sep = "_")
         )
       } else {
-        tibble::as_tibble(
+        dplyr::as_tibble(
           matrix(scale(runif(nrow(similar_keys_vec) * dim(conn)[2], -1, 1)),
             nrow = nrow(similar_keys_vec),
             ncol = dim(conn)[2]
           ) * .3 + dplyr::select(similar_keys_vec, !c("key", "magnitude")) * .7
-        ) %>%
-          dplyr::summarise(across(where(is.double), ~ mean(.)))
+        ) |>
+          dplyr::summarise(dplyr::across(dplyr::where(is.double), ~ mean(.)))
       }
     })
     oov_vec$key <- q

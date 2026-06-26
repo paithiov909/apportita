@@ -41,11 +41,11 @@ wrd <- function(x, y, ...) {
 #' @returns numeric scalar.
 #' @export
 calc_wrd <- function(conn, keys, q, normalized = TRUE, ...) {
-  x <- query(conn, keys, normalized) %>%
-    dplyr::select(!"key") %>%
+  x <- query(conn, keys, normalized) |>
+    dplyr::select(!"key") |>
     as.matrix()
-  y <- query(conn, q, normalized) %>%
-    dplyr::select(!"key") %>%
+  y <- query(conn, q, normalized) |>
+    dplyr::select(!"key") |>
     as.matrix()
   wrd(x, y, ...)
 }

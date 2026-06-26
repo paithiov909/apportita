@@ -21,5 +21,10 @@ Useful links:
 \author{
 \strong{Maintainer}: Akiru Kato \email{paithiov909@gmail.com}
 
+Authors:
+\itemize{
+  \item Akiru Kato \email{paithiov909@gmail.com}
+}
+
 }
 \keyword{internal}
